@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://7e7cw06s1qkj"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_d3b6y"]
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource("1_d3b6y")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 133.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="regenwait" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="regenwait" to="." method="_on_regenwait_timeout"]
