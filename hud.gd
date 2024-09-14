@@ -2,13 +2,26 @@ extends CanvasLayer
 
 @onready var fuselabel = $Label
 @onready var regenwait = $regenwait
+@onready var fusetick1 = $FuseTick
+@onready var fusetick2 = $FuseTick2
+@onready var fusetick3 = $FuseTick3
+@onready var fusetick4 = $FuseTick4
+@onready var fusetick5 = $FuseTick5
+@onready var fusetick6 = $FuseTick6
+@onready var fusetick7 = $FuseTick7
+@onready var fusetick8 = $FuseTick8
+@onready var fusetick9 = $FuseTick9
+@onready var fusetick10 = $FuseTick10
 
 
-var fuseval = gb.fuseval
+
+
+
+var fuseval = 100
 var fusedrained = false
-var newfuseval = gb.fuseval
+var newfuseval = 100
 var regenfuse = true
-
+var explocost = gb.explocost
 
 func _ready():
 	pass # Replace with function body.
@@ -19,6 +32,7 @@ func _process(delta):
 	fuselabel.text = str(int(fuseval))
 	drainfuse()
 	gainfuse()
+	updatebar()
 
 
 func _on_player_exploded():
@@ -37,8 +51,51 @@ func drainfuse():
 
 func gainfuse():
 	if regenfuse:
-		fuseval = move_toward(fuseval,gb.fuseval,.3)
-		newfuseval = move_toward(fuseval,gb.fuseval,.3)
+		fuseval = move_toward(fuseval,100,.3)
+		newfuseval = move_toward(fuseval,100,.3)
 
 func _on_regenwait_timeout():
 	regenfuse = true
+
+
+func updatebar():
+	if fuseval < 90:
+		fusetick10.hide()
+	else:
+		fusetick10.show()
+	if fuseval < 80:
+		fusetick9.hide()
+	else:
+		fusetick9.show()
+	if fuseval < 70:
+		fusetick8.hide()
+	else:
+		fusetick8.show()
+	if fuseval < 60:
+		fusetick7.hide()
+	else:
+		fusetick7.show()
+	if fuseval < 50:
+		fusetick6.hide()
+	else:
+		fusetick6.show()
+	if fuseval < 40:
+		fusetick5.hide()
+	else:
+		fusetick5.show()
+	if fuseval < 30:
+		fusetick4.hide()
+	else:
+		fusetick4.show()
+	if fuseval < 20:
+		fusetick3.hide()
+	else:
+		fusetick3.show()
+	if fuseval < 10:
+		fusetick2.hide()
+	else:
+		fusetick2.show()
+	if fuseval < 0:
+		fusetick1.hide()
+	else:
+		fusetick1.show()

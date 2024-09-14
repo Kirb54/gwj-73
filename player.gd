@@ -157,7 +157,7 @@ func wallslide():
 
 
 func explode():
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and boosts > 0:
+	if Input.is_action_just_pressed('click') and boosts > 0:
 		boosts -= 1
 		var angle = get_global_mouse_position()
 		var diffrence = Vector2(global_position - angle)

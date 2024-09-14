@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://7e7cw06s1qkj"]
+[gd_scene load_steps=4 format=3 uid="uid://7e7cw06s1qkj"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_d3b6y"]
+[ext_resource type="Texture2D" uid="uid://bw0bmyx52rj5q" path="res://assets/fuse bar.png" id="2_fekw2"]
+[ext_resource type="Texture2D" uid="uid://3gbymy26v0vy" path="res://assets/fuse tick.png" id="3_1o62a"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_d3b6y")
@@ -13,5 +15,61 @@ text = "100"
 
 [node name="regenwait" type="Timer" parent="."]
 one_shot = true
+
+[node name="FuseBar" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 472)
+scale = Vector2(0.749999, 1.0125)
+texture = ExtResource("2_fekw2")
+
+[node name="FuseTick" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 616)
+texture = ExtResource("3_1o62a")
+
+[node name="FuseTick2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 584)
+texture = ExtResource("3_1o62a")
+
+[node name="FuseTick3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 552)
+texture = ExtResource("3_1o62a")
+
+[node name="FuseTick4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 520)
+texture = ExtResource("3_1o62a")
+
+[node name="FuseTick5" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 488)
+texture = ExtResource("3_1o62a")
+
+[node name="FuseTick6" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 456)
+texture = ExtResource("3_1o62a")
+
+[node name="FuseTick7" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 424)
+texture = ExtResource("3_1o62a")
+
+[node name="FuseTick8" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 392)
+texture = ExtResource("3_1o62a")
+
+[node name="FuseTick9" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 360)
+texture = ExtResource("3_1o62a")
+
+[node name="FuseTick10" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1119, 328)
+texture = ExtResource("3_1o62a")
 
 [connection signal="timeout" from="regenwait" to="." method="_on_regenwait_timeout"]
