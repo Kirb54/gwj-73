@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4xy1d7loqwbe"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_1dcdn"]
+[ext_resource type="Texture2D" uid="uid://cnb136k5aiuh8" path="res://assets/Plant/Bullet.png" id="2_r0dy4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38yls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r0dy4")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hnxby"]
+radius = 4.0
+
+[node name="bullet" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_1dcdn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_38yls")
+animation = &"shot"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_hnxby")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

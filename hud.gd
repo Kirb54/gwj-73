@@ -12,7 +12,7 @@ extends CanvasLayer
 @onready var fusetick8 = $FuseTick8
 @onready var fusetick9 = $FuseTick9
 @onready var fusetick10 = $FuseTick10
-
+@onready var coinlabel = $coinlabel
 
 
 
@@ -22,6 +22,9 @@ var fusedrained = false
 var newfuseval = 100
 var regenfuse = true
 var explocost = gb.explocost
+var regenrate = gb.regenrate
+var regentime = gb.regentime
+var health = gb.health
 
 func _ready():
 	pass # Replace with function body.
@@ -33,17 +36,18 @@ func _process(delta):
 	drainfuse()
 	gainfuse()
 	updatebar()
+	updatecoins()
 
 
 func _on_player_exploded():
 	fusedrained = true
-	newfuseval -= 10
+	newfuseval -= explocost
 
 func drainfuse():
 	if fusedrained:
 		if newfuseval == fuseval:
 			fusedrained = false
-			regenwait.start()
+			regenwait.start(regentime)
 		else:
 			regenfuse = false
 			regenwait.stop()
@@ -51,8 +55,8 @@ func drainfuse():
 
 func gainfuse():
 	if regenfuse:
-		fuseval = move_toward(fuseval,100,.3)
-		newfuseval = move_toward(fuseval,100,.3)
+		fuseval = move_toward(fuseval,100,regenrate)
+		newfuseval = move_toward(fuseval,100,regenrate)
 
 func _on_regenwait_timeout():
 	regenfuse = true
@@ -99,3 +103,14 @@ func updatebar():
 		fusetick1.hide()
 	else:
 		fusetick1.show()
+
+
+func _on_player_hurt():
+	health -= 1
+
+func fuseget():
+	return fuseval
+
+
+func updatecoins():
+	coinlabel.text = str(gb.coins)
