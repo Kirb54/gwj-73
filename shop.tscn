@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://ctnu5l51vu38c"]
+[gd_scene load_steps=3 format=3 uid="uid://ctnu5l51vu38c"]
+
+[ext_resource type="Texture2D" uid="uid://sfs6rm76gf3w" path="res://assets/Blue.png" id="1_6xkfc"]
+[ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="2_iqq8w"]
 
 [node name="shop" type="Node2D"]
+texture_filter = 1
+
+[node name="Blue" type="Sprite2D" parent="."]
+position = Vector2(561.5, 343.5)
+scale = Vector2(23.7031, 14.0156)
+texture = ExtResource("1_6xkfc")
+
+[node name="title" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 40.0
+offset_right = 660.0
+offset_bottom = 63.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "BUY SOMETHING"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 156.0
+offset_top = 204.0
+offset_right = 404.0
+offset_bottom = 473.0
+theme = ExtResource("2_iqq8w")

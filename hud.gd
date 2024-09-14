@@ -13,7 +13,7 @@ extends CanvasLayer
 @onready var fusetick9 = $FuseTick9
 @onready var fusetick10 = $FuseTick10
 @onready var coinlabel = $coinlabel
-
+@onready var timelabel = $timelabel
 
 
 
@@ -37,6 +37,7 @@ func _process(delta):
 	gainfuse()
 	updatebar()
 	updatecoins()
+	updatetime()
 
 
 func _on_player_exploded():
@@ -114,3 +115,7 @@ func fuseget():
 
 func updatecoins():
 	coinlabel.text = str(gb.coins)
+
+
+func updatetime():
+	timelabel.text = str(gt.minutes) + ':' + str(gt.seconds) + '.' + str(gt.msec)

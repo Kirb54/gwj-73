@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b1fkstfiqxxrb" path="res://assets/testtiles.png" id="1_wxeg6"]
 [ext_resource type="PackedScene" uid="uid://dvjesdns8jrc6" path="res://player.tscn" id="2_mmiqd"]
-[ext_resource type="PackedScene" uid="uid://bqvt2n17pbyko" path="res://chargingenemy.tscn" id="3_2yce1"]
+[ext_resource type="PackedScene" uid="uid://x67jy40k6tko" path="res://shootingenemy.tscn" id="3_035j6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ehhg1"]
 texture = ExtResource("1_wxeg6")
@@ -1402,5 +1402,5 @@ layer_0/tile_data = PackedInt32Array(2097152, 0, 15, 2162688, 0, 16, 2228224, 0,
 [node name="player" parent="." instance=ExtResource("2_mmiqd")]
 position = Vector2(404, 408)
 
-[node name="chargingenemy" parent="." instance=ExtResource("3_2yce1")]
-position = Vector2(609, 481)
+[node name="shootingenemy" parent="." instance=ExtResource("3_035j6")]
+position = Vector2(612, 478)

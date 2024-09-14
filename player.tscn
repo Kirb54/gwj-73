@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dvjesdns8jrc6"]
+[gd_scene load_steps=58 format=3 uid="uid://dvjesdns8jrc6"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_wotcu"]
 [ext_resource type="Texture2D" uid="uid://c8r2brpcbl3g2" path="res://assets/Pink Man/Double Jump (32x32).png" id="2_mlwjk"]
@@ -355,6 +355,13 @@ size = Vector2(18, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xvcu"]
 size = Vector2(17.3333, 7.33333)
 
+[sub_resource type="Curve" id="Curve_3i4bv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252747), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5u1l"]
+radius = 34.0065
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
@@ -387,7 +394,7 @@ shape = SubResource("RectangleShape2D_v85vx")
 [node name="hud" parent="." instance=ExtResource("9_0ri76")]
 
 [node name="wscooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="cyote" type="Timer" parent="."]
@@ -402,9 +409,36 @@ collision_mask = 3
 position = Vector2(1.78814e-07, 15)
 shape = SubResource("RectangleShape2D_0xvcu")
 
+[node name="exploparticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 12)
+emitting = false
+amount = 24
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_3i4bv")
+
+[node name="explodebox" type="Area2D" parent="." groups=["explosion"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explodebox"]
+shape = SubResource("CircleShape2D_g5u1l")
+
+[node name="explodeattacktimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="exploded" from="." to="hud" method="_on_player_exploded"]
 [connection signal="hurt" from="." to="hud" method="_on_player_hurt"]
 [connection signal="timeout" from="wscooldown" to="." method="_on_wscooldown_timeout"]
 [connection signal="timeout" from="cyote" to="." method="_on_cyote_timeout"]
 [connection signal="area_shape_entered" from="stompbox" to="." method="_on_stompbox_area_shape_entered"]
 [connection signal="body_entered" from="stompbox" to="." method="_on_stompbox_body_entered"]
+[connection signal="body_entered" from="explodebox" to="." method="_on_explodebox_body_entered"]

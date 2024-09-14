@@ -1,0 +1,57 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://g4ngimo1kysp"]
+
+[ext_resource type="Texture2D" uid="uid://cyl2y1sk46g3" path="res://assets/Spritesheet_UI_Flat_Button_02.png" id="1_u5dim"]
+[ext_resource type="FontFile" uid="uid://dc0lwjkpcemou" path="res://assets/PublicPixel.ttf" id="2_1pkt2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhqqg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oj5a2"]
+texture = ExtResource("1_u5dim")
+region_rect = Rect2(96.0953, 191.388, 95.8612, 32.8268)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ffxsb"]
+texture = ExtResource("1_u5dim")
+region_rect = Rect2(192.012, 193.392, 96.0238, 30.9179)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40s1n"]
+texture = ExtResource("1_u5dim")
+region_rect = Rect2(-0.179485, 191.281, 96.4043, 33.094)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d40wq"]
+texture = ExtResource("1_u5dim")
+region_rect = Rect2(191.648, 226.973, 96.4833, 29.4585)
+
+[resource]
+default_font = ExtResource("2_1pkt2")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_dhqqg")
+Button/styles/focus = SubResource("StyleBoxTexture_oj5a2")
+Button/styles/hover = SubResource("StyleBoxTexture_ffxsb")
+Button/styles/normal = SubResource("StyleBoxTexture_40s1n")
+Button/styles/pressed = SubResource("StyleBoxTexture_d40wq")

@@ -9,7 +9,7 @@ var regenrate = .3
 var regentime = 1
 var health = 3
 var coins = 0
-
+var level = 1
 func reset():
 	boosts = 1
 	explostr = 300
@@ -19,3 +19,4 @@ func reset():
 	regenrate = .3
 	health = 3
 	coins = 0
+	level = 1

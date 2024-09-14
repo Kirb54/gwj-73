@@ -9,6 +9,9 @@ signal hurt
 @onready var hud = $hud
 @onready var smokeparticles = $smokeparticles
 @onready var stompbox = $stompbox/CollisionShape2D
+@onready var exploparticles = $exploparticles
+@onready var explodehbox = $explodebox/CollisionShape2D
+@onready var explodetimer = $explodeattacktimer
 
 const speed = 500
 const jumpv = -300
@@ -16,7 +19,8 @@ const left = -1
 const right = 1
 const grav = 1200
 const wsgrav = 300
-const wjkick = 500
+const wjkick = 600
+const wjhight = -500
 const hitstunv = 400
 const stompv = -300
 
@@ -35,6 +39,7 @@ var hitstun = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stompbox.disabled = true
+	explodehbox.disabled = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -105,7 +110,7 @@ func jump():
 	
 	if Input.is_action_pressed("ui_accept"):
 		if wallsliding:
-			velocity.y = jumpv
+			velocity.y = wjhight
 			velocity.x = wjkick * -lastdirection
 			cantws = true
 			wscooldown.start()
@@ -173,6 +178,8 @@ func explode():
 		velocity.x = ratio * diffrence.x
 		velocity.y = ratio * diffrence.y
 		flying = true
+		exploparticles.emitting = true
+		explodeattack()
 		exploded.emit()
 
 
@@ -228,4 +235,17 @@ func _on_stompbox_area_shape_entered(area_rid, area, area_shape_index, local_sha
 func _on_stompbox_body_entered(body):
 	if body.is_in_group('enemy'):
 		velocity.y = stompv
+		body.hit()
+
+
+
+func explodeattack():
+	explodehbox.disabled = false
+	explodetimer.start()
+	await explodetimer.timeout
+	explodehbox.disabled = true
+
+
+func _on_explodebox_body_entered(body):
+	if body.is_in_group('enemy'):
 		body.hit()
