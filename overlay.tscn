@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://88u4w8mcq47b"]
+
+[ext_resource type="Script" path="res://overlay.gd" id="1_4fvbl"]
+[ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="2_5yada"]
+
+[node name="overlay" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_4fvbl")
+
+[node name="background" type="Panel" parent="."]
+offset_left = -16.0
+offset_top = -21.0
+offset_right = 1181.0
+offset_bottom = 664.0
+
+[node name="layerlabel" type="Label" parent="."]
+offset_left = -2.0
+offset_right = 1153.0
+offset_bottom = 650.0
+theme = ExtResource("2_5yada")
+theme_override_font_sizes/font_size = 50
+text = "Layer 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="timelabel" type="Label" parent="."]
+offset_right = 1151.0
+offset_bottom = 647.0
+theme = ExtResource("2_5yada")
+theme_override_font_sizes/font_size = 50
+text = "0:0.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="layerwait" type="Timer" parent="."]
+one_shot = true
+
+[node name="timewait" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="finalwait" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="clearlabel" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 649.0
+theme = ExtResource("2_5yada")
+theme_override_font_sizes/font_size = 50
+text = "CLEARED"
+horizontal_alignment = 1
+vertical_alignment = 1

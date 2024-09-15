@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal exploded
 signal hurt
+signal died
+
 
 @onready var anim = $AnimatedSprite2D
 @onready var cyote = $cyote
@@ -12,19 +14,19 @@ signal hurt
 @onready var exploparticles = $exploparticles
 @onready var explodehbox = $explodebox/CollisionShape2D
 @onready var explodetimer = $explodeattacktimer
+@onready var gameoverpart = $gameoverparticles
 
-const speed = 500
 const jumpv = -300
 const left = -1
 const right = 1
-const grav = 1200
+
 const wsgrav = 300
 const wjkick = 600
 const wjhight = -500
 const hitstunv = 400
 const stompv = -300
 
-
+var speed = gb.movementspeed
 var boosts = gb.boosts
 var explostr = gb.explostr
 var canjump = true
@@ -34,8 +36,8 @@ var wallsliding = false
 var cantws = false
 var flying = false
 var hitstun = false
-
-
+var grav = gb.gravity
+var death = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stompbox.disabled = true
@@ -44,7 +46,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if not hitstun:
+	if not hitstun and not death:
 		run()
 		jump()
 		explode()
@@ -172,9 +174,15 @@ func explode():
 		boosts -= 1
 		var angle = get_global_mouse_position()
 		var diffrence = Vector2(global_position - angle)
+		if gb.uncontrol:
+			var fuse = hud.fuseget()
+			var shift = 100 - fuse
+			diffrence.x += randf_range(shift,-shift)
+			diffrence.y += randf_range(shift,-shift)
 		var abv = abs(diffrence)
 		var add = abv.x + abv.y
 		var ratio = explostr/add
+		
 		velocity.x = ratio * diffrence.x
 		velocity.y = ratio * diffrence.y
 		flying = true
@@ -249,3 +257,27 @@ func explodeattack():
 func _on_explodebox_body_entered(body):
 	if body.is_in_group('enemy'):
 		body.hit()
+
+
+func _on_hud_boom():
+	hit(randf_range(1,-1))
+
+
+func _on_hud_died():
+	if not death:
+		death = true
+		anim.play('hit')
+		await anim.animation_finished
+		died.emit()
+		self.hide()
+
+
+func _on_hud_gameover():
+	if not death:
+		death = true
+		anim.play("hit")
+		await anim.animation_finished
+		anim.hide()
+		gameoverpart.emitting = true
+		await gameoverpart.finished
+		get_tree().change_scene_to_file()

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://sdubvsaj6deu"]
+
+[node name="gameoverscreen" type="Node2D"]

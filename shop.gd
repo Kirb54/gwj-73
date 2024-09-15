@@ -25,10 +25,7 @@ var focused = false
 
 func _ready():
 	specialitemframe.frame = specialitem
-#0 = death
-#1 = uncontrol
-#2 = floaty 
-#3 = double
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -120,3 +117,75 @@ func _on_specialitem_mouse_exited():
 
 func updatemoney():
 	coinlabel.text = 'Coins: ' + str(gb.coins)
+
+
+func _on_strbutton_pressed():
+	if gb.coins >= 5:
+		print('extra str')
+		gb.coins -= 5
+		gb.booststr()
+
+
+func _on_clockbutton_pressed():
+	if gb.coins >= 7:
+		print('moretime')
+		gb.coins -= 7
+		gt.time += 20
+
+
+func _on_explobutton_pressed():
+	if gb.coins >= 10:
+		print('more bounce')
+		gb.coins -= 10
+		gb.boosts += 1
+
+
+func _on_fusebutton_pressed():
+	if gb.coins >= 5:
+		print('fuse')
+		gb.coins -= 5
+		gb.explocost *= .9
+
+
+func _on_drinkbutton_pressed():
+	if gb.coins >= 3:
+		print('speed')
+		gb.coins -= 3
+		gb.movementspeed *= 1.2
+
+
+func _on_coinbutton_pressed():
+	if gb.coins >= 5:
+		print('money')
+		gb.coins -= 5
+		gb.extracoins += 1
+
+#0 = death
+#1 = uncontrol
+#2 = floaty 
+#3 = double
+func _on_specialitem_pressed():
+	if gb.coins >= 15:
+		gb.coins -= 15
+		if specialitem == 0:
+			print('death')
+			gb.deathpenalty = 0
+			gb.maxhealth = 1
+		if specialitem == 1:
+			print('uncontrol')
+			gb.uncontrol = true
+		if specialitem == 2:
+			print('floaty')
+			if gb.maxhealth > 1:
+				gb.maxhealth -= 1
+			gb.gravity *= .7
+		if specialitem == 3:
+			print('double')
+			gb.explostr *= 2
+			gb.explocost *= 2
+		
+
+
+func _on_leavebutton_pressed():
+	gb.level += 1
+	get_tree().change_scene_to_file("res://lvl_1.tscn")

@@ -1,5 +1,10 @@
 extends CanvasLayer
 
+signal boom
+signal died
+signal gameover
+
+
 @onready var fuselabel = $Label
 @onready var regenwait = $regenwait
 @onready var fusetick1 = $FuseTick
@@ -14,7 +19,7 @@ extends CanvasLayer
 @onready var fusetick10 = $FuseTick10
 @onready var coinlabel = $coinlabel
 @onready var timelabel = $timelabel
-
+@onready var healthlabel = $healthlabel
 
 
 var fuseval = 100
@@ -24,7 +29,7 @@ var regenfuse = true
 var explocost = gb.explocost
 var regenrate = gb.regenrate
 var regentime = gb.regentime
-var health = gb.health
+var health = gb.maxhealth
 
 func _ready():
 	pass # Replace with function body.
@@ -38,11 +43,17 @@ func _process(delta):
 	updatebar()
 	updatecoins()
 	updatetime()
+	checkempty()
+	updatehealth()
+	checktime()
 
 
 func _on_player_exploded():
 	fusedrained = true
 	newfuseval -= explocost
+	if fuseval <= 0:
+		health -= 1
+		boom.emit()
 
 func drainfuse():
 	if fusedrained:
@@ -114,8 +125,20 @@ func fuseget():
 
 
 func updatecoins():
-	coinlabel.text = str(gb.coins)
+	coinlabel.text = 'Coins: ' + str(gb.coins)
 
 
 func updatetime():
 	timelabel.text = str(gt.minutes) + ':' + str(gt.seconds) + '.' + str(gt.msec)
+
+
+func checkempty():
+	if health <= 0:
+		died.emit()
+
+func updatehealth():
+	healthlabel.text = 'Health: ' + str(health)
+
+func checktime():
+	if gt.time <= 0:
+		gameover.emit()

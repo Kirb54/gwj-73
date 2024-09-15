@@ -55,5 +55,5 @@ func hit():
 	hbox.disabled = true
 	anim.play('hit')
 	await anim.animation_finished
-	gb.coins += coinval
+	gb.coins += coinval + gb.extracoins
 	self.queue_free()

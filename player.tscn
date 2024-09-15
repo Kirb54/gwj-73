@@ -437,6 +437,8 @@ one_shot = true
 
 [connection signal="exploded" from="." to="hud" method="_on_player_exploded"]
 [connection signal="hurt" from="." to="hud" method="_on_player_hurt"]
+[connection signal="boom" from="hud" to="." method="_on_hud_boom"]
+[connection signal="died" from="hud" to="." method="_on_hud_died"]
 [connection signal="timeout" from="wscooldown" to="." method="_on_wscooldown_timeout"]
 [connection signal="timeout" from="cyote" to="." method="_on_cyote_timeout"]
 [connection signal="area_shape_entered" from="stompbox" to="." method="_on_stompbox_area_shape_entered"]
