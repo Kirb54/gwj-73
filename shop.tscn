@@ -1,10 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctnu5l51vu38c"]
+[gd_scene load_steps=15 format=3 uid="uid://ctnu5l51vu38c"]
 
+[ext_resource type="Script" path="res://shop.gd" id="1_6s0hx"]
 [ext_resource type="Texture2D" uid="uid://sfs6rm76gf3w" path="res://assets/Blue.png" id="1_6xkfc"]
 [ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="2_iqq8w"]
+[ext_resource type="Texture2D" uid="uid://b8tu1jibh8wb2" path="res://assets/upgrades/bomb.png" id="4_idqs5"]
+[ext_resource type="Texture2D" uid="uid://bbe6glfbtutpb" path="res://assets/upgrades/explosion.png" id="5_8etbm"]
+[ext_resource type="Texture2D" uid="uid://crgedacxrhsrx" path="res://assets/upgrades/glasses.png" id="6_dfnb3"]
+[ext_resource type="Texture2D" uid="uid://bn8hd883irxky" path="res://assets/upgrades/clock.png" id="7_kbukp"]
+[ext_resource type="Texture2D" uid="uid://dah5db4vf1qp4" path="res://assets/upgrades/drink.png" id="8_c7484"]
+[ext_resource type="Texture2D" uid="uid://dqukplxg7nbhc" path="res://assets/upgrades/coin.png" id="9_dpn8k"]
+[ext_resource type="Texture2D" uid="uid://elndcrr4ft3u" path="res://assets/upgrades/skull.png" id="10_qojag"]
+[ext_resource type="Texture2D" uid="uid://cax8qhrlu5xma" path="res://assets/upgrades/uncontrollable.png" id="11_ni2x5"]
+[ext_resource type="Texture2D" uid="uid://y4g18v5sxgix" path="res://assets/upgrades/floatyshoes.png" id="12_upvvv"]
+[ext_resource type="Texture2D" uid="uid://br80lcn1b4pq6" path="res://assets/upgrades/double bomb.png" id="13_43y0u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0h13a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_qojag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ni2x5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_upvvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_43y0u")
+}],
+"loop": true,
+"name": &"frame",
+"speed": 5.0
+}]
 
 [node name="shop" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_6s0hx")
 
 [node name="Blue" type="Sprite2D" parent="."]
 position = Vector2(561.5, 343.5)
@@ -20,9 +52,212 @@ theme = ExtResource("2_iqq8w")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "BUY SOMETHING"
 
-[node name="Button" type="Button" parent="."]
-offset_left = 156.0
-offset_top = 204.0
-offset_right = 404.0
-offset_bottom = 473.0
+[node name="strbutton" type="Button" parent="."]
+offset_left = 91.0
+offset_top = 155.0
+offset_right = 229.0
+offset_bottom = 332.0
 theme = ExtResource("2_iqq8w")
+icon = ExtResource("4_idqs5")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="explobutton" type="Button" parent="."]
+offset_left = 438.0
+offset_top = 156.0
+offset_right = 576.0
+offset_bottom = 333.0
+theme = ExtResource("2_iqq8w")
+icon = ExtResource("5_8etbm")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="fusebutton" type="Button" parent="."]
+offset_left = 611.0
+offset_top = 156.0
+offset_right = 749.0
+offset_bottom = 333.0
+theme = ExtResource("2_iqq8w")
+icon = ExtResource("6_dfnb3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="clockbutton" type="Button" parent="."]
+offset_left = 265.0
+offset_top = 158.0
+offset_right = 395.0
+offset_bottom = 330.0
+theme = ExtResource("2_iqq8w")
+icon = ExtResource("7_kbukp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="discription" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 65.0
+offset_right = 1138.0
+offset_bottom = 186.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="waittimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="drinkbutton" type="Button" parent="."]
+offset_left = 790.0
+offset_top = 160.0
+offset_right = 924.0
+offset_bottom = 330.0
+theme = ExtResource("2_iqq8w")
+icon = ExtResource("8_c7484")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="coinbutton" type="Button" parent="."]
+offset_left = 960.0
+offset_top = 163.0
+offset_right = 1094.0
+offset_bottom = 333.0
+theme = ExtResource("2_iqq8w")
+icon = ExtResource("9_dpn8k")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="cost" type="Label" parent="."]
+offset_left = 136.0
+offset_top = 338.0
+offset_right = 176.0
+offset_bottom = 401.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "5"
+horizontal_alignment = 1
+
+[node name="cost2" type="Label" parent="."]
+offset_left = 313.0
+offset_top = 338.0
+offset_right = 353.0
+offset_bottom = 401.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "7"
+horizontal_alignment = 1
+
+[node name="cost3" type="Label" parent="."]
+offset_left = 488.0
+offset_top = 338.0
+offset_right = 548.0
+offset_bottom = 401.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "10"
+
+[node name="cost4" type="Label" parent="."]
+offset_left = 655.0
+offset_top = 338.0
+offset_right = 715.0
+offset_bottom = 401.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "5"
+horizontal_alignment = 1
+
+[node name="cost5" type="Label" parent="."]
+offset_left = 828.0
+offset_top = 338.0
+offset_right = 888.0
+offset_bottom = 401.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+
+[node name="cost6" type="Label" parent="."]
+offset_left = 1000.0
+offset_top = 338.0
+offset_right = 1060.0
+offset_bottom = 401.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "5"
+horizontal_alignment = 1
+
+[node name="specialitem" type="Button" parent="."]
+offset_left = 263.0
+offset_top = 453.0
+offset_right = 418.0
+offset_bottom = 615.0
+theme = ExtResource("2_iqq8w")
+
+[node name="speciallabel" type="Label" parent="."]
+offset_left = 274.0
+offset_top = 407.0
+offset_right = 414.0
+offset_bottom = 430.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Special"
+
+[node name="specialitemframe" type="AnimatedSprite2D" parent="."]
+position = Vector2(341, 518)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_0h13a")
+animation = &"frame"
+
+[node name="specialitemcost" type="Label" parent="."]
+offset_left = 431.0
+offset_top = 515.0
+offset_right = 496.0
+offset_bottom = 561.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "15"
+
+[node name="coinlabel" type="Label" parent="."]
+offset_right = 92.0
+offset_bottom = 60.0
+theme = ExtResource("2_iqq8w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Coins: 0"
+
+[node name="leavebutton" type="Button" parent="."]
+offset_left = 740.0
+offset_top = 467.0
+offset_right = 1004.0
+offset_bottom = 556.0
+theme = ExtResource("2_iqq8w")
+text = "Leave"
+
+[connection signal="focus_entered" from="strbutton" to="." method="_on_strbutton_focus_entered"]
+[connection signal="focus_exited" from="strbutton" to="." method="_on_strbutton_focus_exited"]
+[connection signal="mouse_entered" from="strbutton" to="." method="_on_strbutton_mouse_entered"]
+[connection signal="mouse_exited" from="strbutton" to="." method="_on_strbutton_mouse_exited"]
+[connection signal="mouse_entered" from="explobutton" to="." method="_on_explobutton_mouse_entered"]
+[connection signal="mouse_exited" from="explobutton" to="." method="_on_explobutton_mouse_exited"]
+[connection signal="mouse_entered" from="fusebutton" to="." method="_on_fusebutton_mouse_entered"]
+[connection signal="mouse_exited" from="fusebutton" to="." method="_on_fusebutton_mouse_exited"]
+[connection signal="mouse_entered" from="clockbutton" to="." method="_on_clockbutton_mouse_entered"]
+[connection signal="mouse_exited" from="clockbutton" to="." method="_on_clockbutton_mouse_exited"]
+[connection signal="mouse_entered" from="drinkbutton" to="." method="_on_drinkbutton_mouse_entered"]
+[connection signal="mouse_exited" from="drinkbutton" to="." method="_on_drinkbutton_mouse_exited"]
+[connection signal="mouse_entered" from="coinbutton" to="." method="_on_coinbutton_mouse_entered"]
+[connection signal="mouse_exited" from="coinbutton" to="." method="_on_coinbutton_mouse_exited"]
+[connection signal="mouse_entered" from="specialitem" to="." method="_on_specialitem_mouse_entered"]
+[connection signal="mouse_exited" from="specialitem" to="." method="_on_specialitem_mouse_exited"]
