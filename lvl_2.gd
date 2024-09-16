@@ -1,11 +1,11 @@
 extends Node2D
 
+
 @onready var overlay = $overlay
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gt.tracking = true
 	overlay.startlevel()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -22,7 +22,3 @@ func _on_player_died():
 	get_tree().paused = true
 	overlay.death()
 	
-
-
-
-

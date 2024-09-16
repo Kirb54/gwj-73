@@ -41,24 +41,30 @@ func death():
 	layertimer.start()
 	await layertimer.timeout
 	realtime = gt.time
-	gt.time -= gb.deathpenalty
-	print(realtime)
-	print(gt.time)
-	removetimer = true
-	changetime()
+	realtime -= gb.deathpenalty
+	if gt.time <= 10:
+		realtime = gt.time
+		skipwaiting()
+	elif realtime < 10:
+		realtime = 10
+		changetime()
+	else:
+		changetime()
+	
 	await changefin
 	finalwait.start()
 	await finalwait.timeout
 	timelabel.hide()
-	donedeathing.emit()
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 
 func changetime():
 	if realtime != gt.time:
-		realtime = move_toward(realtime,gt.time,1)
-		var msec = fmod(realtime, 1) * 100
-		var seconds = fmod(realtime, 60)
-		var minutes = fmod(realtime, 3600) / 60
+		gt.time = move_toward(gt.time,realtime,1)
+		var msec = fmod(gt.time, 1) * 100
+		var seconds = fmod(gt.time, 60)
+		var minutes = fmod(gt.time, 3600) / 60
 		timelabel.text = str(int(minutes)) + ':' + str(int(seconds)) + '.' + str(int(msec))
 		timewait.start()
 		await timewait.timeout
@@ -66,9 +72,17 @@ func changetime():
 	else:
 		changefin.emit()
 
+func skipwaiting():
+	timewait.start()
+	await timewait.timeout
+	changefin.emit()
+
+
+
 func clear():
 	self.show()
 	cleared.show()
 	layertimer.start()
 	await layertimer.timeout
-	doneclear.emit()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://shop.tscn")
