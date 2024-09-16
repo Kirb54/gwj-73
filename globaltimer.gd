@@ -1,6 +1,6 @@
 extends Node
 
-var time: float = 30
+var time: float = 150
 var minutes: int = 0
 var seconds: int = 0
 var msec: int = 0

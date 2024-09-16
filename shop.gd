@@ -8,7 +8,7 @@ extends Node2D
 @onready var coinlabel = $coinlabel
 
 
-
+const levels = ["res://lvl_1.tscn","res://lvl_2.tscn"]
 const booststr = 'Boosts the power of your explosions (1.1x)'
 const clock = 'Increases the time you have remaining (+20 sec)'
 const boostcount = 'Increases the amout of explosions you can do midair (+1)'
@@ -188,4 +188,5 @@ func _on_specialitem_pressed():
 
 func _on_leavebutton_pressed():
 	gb.level += 1
-	get_tree().change_scene_to_file("res://lvl_1.tscn")
+	var randlevel = randi() % levels.size()
+	get_tree().change_scene_to_file(levels[randlevel])
