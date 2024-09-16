@@ -280,4 +280,4 @@ func _on_hud_gameover():
 		anim.hide()
 		gameoverpart.emitting = true
 		await gameoverpart.finished
-		get_tree().change_scene_to_file()
+		get_tree().change_scene_to_file("res://gameoverscreen.tscn")

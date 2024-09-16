@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dvjesdns8jrc6"]
+[gd_scene load_steps=59 format=3 uid="uid://dvjesdns8jrc6"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_wotcu"]
 [ext_resource type="Texture2D" uid="uid://c8r2brpcbl3g2" path="res://assets/Pink Man/Double Jump (32x32).png" id="2_mlwjk"]
@@ -362,6 +362,10 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5u1l"]
 radius = 34.0065
 
+[sub_resource type="Curve" id="Curve_sd1ed"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.792135, 0.901099), 0.0, 0.0, 0, 0, Vector2(1, 0.527472), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
@@ -435,10 +439,23 @@ shape = SubResource("CircleShape2D_g5u1l")
 wait_time = 0.1
 one_shot = true
 
+[node name="gameoverparticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 64
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+scale_amount_min = 15.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_sd1ed")
+
 [connection signal="exploded" from="." to="hud" method="_on_player_exploded"]
 [connection signal="hurt" from="." to="hud" method="_on_player_hurt"]
 [connection signal="boom" from="hud" to="." method="_on_hud_boom"]
 [connection signal="died" from="hud" to="." method="_on_hud_died"]
+[connection signal="gameover" from="hud" to="." method="_on_hud_gameover"]
 [connection signal="timeout" from="wscooldown" to="." method="_on_wscooldown_timeout"]
 [connection signal="timeout" from="cyote" to="." method="_on_cyote_timeout"]
 [connection signal="area_shape_entered" from="stompbox" to="." method="_on_stompbox_area_shape_entered"]

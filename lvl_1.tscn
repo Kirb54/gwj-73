@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://da610bwp5x1n2"]
+[gd_scene load_steps=10 format=3 uid="uid://da610bwp5x1n2"]
 
 [ext_resource type="Script" path="res://lvl_1.gd" id="1_l1hea"]
 [ext_resource type="PackedScene" uid="uid://dnfo5v0wojof7" path="res://tiles.tscn" id="1_nm8mx"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bqvt2n17pbyko" path="res://chargingenemy.tscn" id="4_daq5w"]
 [ext_resource type="PackedScene" uid="uid://byvtdaysmmcti" path="res://door.tscn" id="5_otw6v"]
 [ext_resource type="PackedScene" uid="uid://88u4w8mcq47b" path="res://overlay.tscn" id="7_x5mc5"]
+[ext_resource type="PackedScene" uid="uid://b7428wh0vxmm0" path="res://flyingenemy.tscn" id="8_l6wyn"]
+[ext_resource type="PackedScene" uid="uid://dy0y0k56ha3yh" path="res://10_coin.tscn" id="9_dfdx1"]
 
 [node name="lvl1" type="Node2D"]
 texture_filter = 1
@@ -39,6 +41,12 @@ flipped = true
 metadata/_edit_vertical_guides_ = [-15.0]
 
 [node name="overlay" parent="." instance=ExtResource("7_x5mc5")]
+
+[node name="flyingenemy" parent="." instance=ExtResource("8_l6wyn")]
+position = Vector2(753, -299)
+
+[node name="10coin" parent="." instance=ExtResource("9_dfdx1")]
+position = Vector2(470, 772)
 
 [connection signal="cleared" from="door" to="." method="_on_door_cleared"]
 [connection signal="died" from="player" to="." method="_on_player_died"]
