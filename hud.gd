@@ -118,7 +118,12 @@ func updatebar():
 
 
 func _on_player_hurt():
-	health -= 1
+	if gb.coinhealth:
+		gb.coins -= 5
+		if gb.coins < 0:
+			gb.coins = 0
+	else:
+		health -= 1
 
 func fuseget():
 	return fuseval

@@ -9,12 +9,13 @@ var regenrate = .3
 var regentime = 1
 var gravity = 1200
 var maxhealth = 3
-var coins = 0
+var coins = 100
 var level = 1
 var movementspeed = 500
 var extracoins = 0
 var deathpenalty = 30
 var uncontrol = false
+var coinhealth = false
 func reset():
 	boosts = 1
 	explostr = 300

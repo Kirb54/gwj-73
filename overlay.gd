@@ -70,6 +70,8 @@ func changetime():
 		await timewait.timeout
 		changetime()
 	else:
+		timewait.start()
+		await timewait.timeout
 		changefin.emit()
 
 func skipwaiting():

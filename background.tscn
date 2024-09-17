@@ -3,11 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://sfs6rm76gf3w" path="res://assets/Blue.png" id="1_psai2"]
 
 [node name="background" type="ParallaxBackground"]
-metadata/_edit_vertical_guides_ = [1252.0]
 metadata/_edit_horizontal_guides_ = [726.0]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(1252, 726)
+motion_mirroring = Vector2(1250, 726)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
 texture_filter = 1

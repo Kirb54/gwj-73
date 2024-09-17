@@ -1,14 +1,14 @@
 extends Node2D
-
+signal done
 
 @onready var waittimer = $waittimer
 @onready var discription = $discription
 @onready var specialitemframe = $specialitemframe
-@onready var specialitem = randi_range(0,3)
+@onready var specialitem = randi_range(0,4)
 @onready var coinlabel = $coinlabel
 
 
-const levels = ["res://lvl_1.tscn","res://lvl_2.tscn"]
+const levels = ["res://lvl_1.tscn","res://lvl_2.tscn","res://lvl_3.tscn"]
 const booststr = 'Boosts the power of your explosions (1.1x)'
 const clock = 'Increases the time you have remaining (+20 sec)'
 const boostcount = 'Increases the amout of explosions you can do midair (+1)'
@@ -19,11 +19,14 @@ const doubletrouble = 'You double your explosion strengh but you also duse doubl
 const floaty = 'Decrease your gravity but decrease your max health (1.3x,-1)'
 const deathdefience = 'You no longer lose time when you die but you only have 1 health'
 const uncontrollable = 'You can overspend your fuse but you will lose control over your direction'
+const bankshare = 'You cannot die from damage but you lose money on hit'
 
 var typing = false
 var focused = false
 
 func _ready():
+	specialitemcheck()
+	await done
 	specialitemframe.frame = specialitem
 
 
@@ -31,6 +34,24 @@ func _ready():
 func _process(delta):
 	updatemoney()
 
+
+
+
+#0 = death
+#1 = uncontrol
+#2 = floaty 
+#3 = double
+func specialitemcheck():
+	if specialitem == 0 and gb.deathpenalty == 0:
+		specialitem = randi_range(1,3)
+		specialitemcheck()
+	elif specialitem == 1 and gb.uncontrol:
+		specialitem = randi_range(0,3)
+		specialitemcheck()
+	else:
+		waittimer.start()
+		await waittimer.timeout
+		done.emit()
 func addiscription(disc):
 	if not typing:
 		discription.text = ''
@@ -110,6 +131,8 @@ func _on_specialitem_mouse_entered():
 		addiscription(floaty)
 	elif specialitem == 3:
 		addiscription(doubletrouble)
+	elif specialitem == 4:
+		addiscription(bankshare)
 
 
 func _on_specialitem_mouse_exited():
@@ -160,10 +183,6 @@ func _on_coinbutton_pressed():
 		gb.coins -= 5
 		gb.extracoins += 1
 
-#0 = death
-#1 = uncontrol
-#2 = floaty 
-#3 = double
 func _on_specialitem_pressed():
 	if gb.coins >= 15:
 		gb.coins -= 15
@@ -183,7 +202,8 @@ func _on_specialitem_pressed():
 			print('double')
 			gb.explostr *= 2
 			gb.explocost *= 2
-		
+		if specialitem == 4:
+			gb.coinhealth = true
 
 
 func _on_leavebutton_pressed():
