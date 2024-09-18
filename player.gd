@@ -15,6 +15,8 @@ signal died
 @onready var explodehbox = $explodebox/CollisionShape2D
 @onready var explodetimer = $explodeattacktimer
 @onready var gameoverpart = $gameoverparticles
+@onready var cam = $Camera2D
+@onready var screenshaketimer = $screenshaketimer
 
 const jumpv = -300
 const left = -1
@@ -38,6 +40,7 @@ var flying = false
 var hitstun = false
 var grav = gb.gravity
 var death = false
+var screenshake = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stompbox.disabled = true
@@ -53,6 +56,7 @@ func _process(delta):
 		wallslide()
 		animations()
 		stomphbox()
+	screenshaker()
 	gravity(delta)
 	smoke()
 	
@@ -214,6 +218,7 @@ func hit(v):
 		velocity.x = -hitstunv
 	velocity.y = 0
 	hitstun = true
+	screenshaketimer.start()
 	anim.play('hit')
 	await anim.animation_finished
 	hitstun = false
@@ -281,3 +286,10 @@ func _on_hud_gameover():
 		gameoverpart.emitting = true
 		await gameoverpart.finished
 		get_tree().change_scene_to_file("res://gameoverscreen.tscn")
+
+
+
+func screenshaker():
+	if screenshaketimer.time_left != 0:
+		cam.offset.x = randf_range(-5,5)
+		cam.offset.y = randf_range(-5,5)

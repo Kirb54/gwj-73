@@ -394,6 +394,8 @@ position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_v85vx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="hud" parent="." instance=ExtResource("9_0ri76")]
 
@@ -450,6 +452,10 @@ initial_velocity_max = 400.0
 scale_amount_min = 15.0
 scale_amount_max = 15.0
 scale_amount_curve = SubResource("Curve_sd1ed")
+
+[node name="screenshaketimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
 
 [connection signal="exploded" from="." to="hud" method="_on_player_exploded"]
 [connection signal="hurt" from="." to="hud" method="_on_player_hurt"]
