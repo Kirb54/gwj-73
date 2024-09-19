@@ -127,7 +127,7 @@ func jump():
 
 
 func animations():
-	if not bored:
+	if not bored and not hitstun:
 		if flying:
 			anim.play('combust')
 			anim.flip_h = getflip()
@@ -211,18 +211,19 @@ func _on_wscooldown_timeout():
 	cantws = false
 
 func hit(v):
-	hurt.emit()
-	if v > 0:
-		velocity.x = hitstunv
-	else:
-		velocity.x = -hitstunv
-	velocity.y = 0
-	hitstun = true
-	screenshaketimer.start()
-	anim.play('hit')
-	await anim.animation_finished
-	cam.offset = Vector2(0,0)
-	hitstun = false
+	if not hitstun:
+		hurt.emit()
+		if v > 0:
+			velocity.x = hitstunv
+		else:
+			velocity.x = -hitstunv
+		velocity.y = 0
+		hitstun = true
+		screenshaketimer.start()
+		anim.play('hit')
+		await anim.animation_finished
+		cam.offset = Vector2(0,0)
+		hitstun = false
 
 
 
@@ -266,7 +267,8 @@ func _on_explodebox_body_entered(body):
 
 
 func _on_hud_boom():
-	hit(randf_range(1,-1))
+	if not hitstun:
+		hit(randf_range(1,-1))
 
 
 func _on_hud_died():

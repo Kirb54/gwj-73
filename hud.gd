@@ -42,9 +42,10 @@ func _process(delta):
 	gainfuse()
 	updatebar()
 	updatecoins()
+	if not gb.sandbox:
+		checkempty()
+		updatehealth()
 	updatetime()
-	checkempty()
-	updatehealth()
 	checktime()
 
 
@@ -52,7 +53,6 @@ func _on_player_exploded():
 	fusedrained = true
 	newfuseval -= explocost
 	if fuseval <= 0:
-		health -= 1
 		boom.emit()
 
 func drainfuse():
@@ -134,7 +134,10 @@ func updatecoins():
 
 
 func updatetime():
-	timelabel.text = str(gt.minutes) + ':' + str(gt.seconds) + '.' + str(gt.msec)
+	if not gb.sandbox:
+		timelabel.text = str(gt.minutes) + ':' + str(gt.seconds) + '.' + str(gt.msec)
+	else:
+		timelabel.hide()
 
 
 func checkempty():

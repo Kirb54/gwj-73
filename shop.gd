@@ -8,7 +8,7 @@ signal done
 @onready var coinlabel = $coinlabel
 
 
-const levels = ["res://lvl_1.tscn","res://lvl_2.tscn","res://lvl_3.tscn"]
+const levels = ["res://lvl_1.tscn","res://lvl_2.tscn","res://lvl_3.tscn","res://lvl_4.tscn","res://lvl_5.tscn","res://lvl_6.tscn"]
 const booststr = 'Boosts the power of your explosions (1.1x)'
 const clock = 'Increases the time you have remaining (+20 sec)'
 const boostcount = 'Increases the amout of explosions you can do midair (+1)'
@@ -41,11 +41,15 @@ func _process(delta):
 #1 = uncontrol
 #2 = floaty 
 #3 = double
+#4 = coinhealth
 func specialitemcheck():
 	if specialitem == 0 and gb.deathpenalty == 0:
 		specialitem = randi_range(1,3)
 		specialitemcheck()
 	elif specialitem == 1 and gb.uncontrol:
+		specialitem = randi_range(0,3)
+		specialitemcheck()
+	elif specialitem == 4 and gb.coinhealth:
 		specialitem = randi_range(0,3)
 		specialitemcheck()
 	else:
@@ -209,4 +213,5 @@ func _on_specialitem_pressed():
 func _on_leavebutton_pressed():
 	gb.level += 1
 	var randlevel = randi() % levels.size()
+	#levels[randlevel]
 	get_tree().change_scene_to_file(levels[randlevel])

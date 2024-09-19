@@ -20,58 +20,58 @@ one_shot = true
 
 [node name="FuseBar" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 472)
+position = Vector2(1086, 456)
 scale = Vector2(0.749999, 1.0125)
 texture = ExtResource("2_fekw2")
 
 [node name="FuseTick" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 616)
+position = Vector2(1086, 600)
 texture = ExtResource("3_1o62a")
 
 [node name="FuseTick2" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 584)
+position = Vector2(1086, 568)
 texture = ExtResource("3_1o62a")
 
 [node name="FuseTick3" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 552)
+position = Vector2(1086, 536)
 texture = ExtResource("3_1o62a")
 
 [node name="FuseTick4" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 520)
+position = Vector2(1086, 504)
 texture = ExtResource("3_1o62a")
 
 [node name="FuseTick5" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 488)
+position = Vector2(1086, 472)
 texture = ExtResource("3_1o62a")
 
 [node name="FuseTick6" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 456)
+position = Vector2(1086, 440)
 texture = ExtResource("3_1o62a")
 
 [node name="FuseTick7" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 424)
+position = Vector2(1086, 408)
 texture = ExtResource("3_1o62a")
 
 [node name="FuseTick8" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 392)
+position = Vector2(1086, 376)
 texture = ExtResource("3_1o62a")
 
 [node name="FuseTick9" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 360)
+position = Vector2(1086, 344)
 texture = ExtResource("3_1o62a")
 
 [node name="FuseTick10" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1119, 328)
+position = Vector2(1086, 312)
 texture = ExtResource("3_1o62a")
 
 [node name="coinlabel" type="Label" parent="."]
@@ -81,7 +81,7 @@ offset_right = 73.0
 offset_bottom = 626.0
 theme = ExtResource("4_20xbe")
 theme_override_font_sizes/font_size = 40
-text = "0"
+text = "Coins: 0"
 
 [node name="timelabel" type="Label" parent="."]
 offset_left = 249.0
@@ -99,5 +99,14 @@ offset_bottom = 58.0
 theme = ExtResource("4_20xbe")
 theme_override_font_sizes/font_size = 30
 text = "Health: 3"
+
+[node name="fuselabel" type="Label" parent="."]
+offset_left = 1055.0
+offset_top = 272.0
+offset_right = 1119.0
+offset_bottom = 295.0
+theme = ExtResource("4_20xbe")
+text = "Fuse"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="regenwait" to="." method="_on_regenwait_timeout"]

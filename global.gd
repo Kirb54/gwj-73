@@ -16,6 +16,7 @@ var extracoins = 0
 var deathpenalty = 30
 var uncontrol = false
 var coinhealth = false
+var sandbox = false
 func reset():
 	boosts = 1
 	explostr = 300
@@ -30,6 +31,8 @@ func reset():
 	extracoins = 0
 	deathpenalty = 30
 	uncontrol = false
+	coinhealth = false
+	sandbox = false
 
 
 func booststr():

@@ -41,6 +41,7 @@ func attack():
 	var inst = bullet.instantiate()
 	inst.shot(flipped)
 	inst.global_position = spawnpos.global_position
+	
 	add_sibling(inst)
 	attacking = false
 	shootimer.start()
