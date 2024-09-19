@@ -11,6 +11,7 @@ signal doneclear
 @onready var timelabel = $timelabel
 @onready var layertimer = $layerwait
 @onready var cleared = $clearlabel
+@onready var parrytimer = $parrytimer
 @onready var removetimer = false
 @onready var realtime = 0
 func _ready():
@@ -88,3 +89,6 @@ func clear():
 	await layertimer.timeout
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://shop.tscn")
+
+
+

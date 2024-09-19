@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://x67jy40k6tko" path="res://shootingenemy.tscn" id="4_jp82h"]
 [ext_resource type="PackedScene" uid="uid://b7428wh0vxmm0" path="res://flyingenemy.tscn" id="5_ny2yf"]
 [ext_resource type="PackedScene" uid="uid://bqvt2n17pbyko" path="res://chargingenemy.tscn" id="6_d4by0"]
-[ext_resource type="PackedScene" uid="uid://dy0y0k56ha3yh" path="res://10_coin.tscn" id="7_r1psr"]
 [ext_resource type="PackedScene" uid="uid://88u4w8mcq47b" path="res://overlay.tscn" id="9_a821q"]
+[ext_resource type="PackedScene" uid="uid://emnlf0025uum" path="res://5_coin.tscn" id="10_c0808"]
 [ext_resource type="PackedScene" uid="uid://byvtdaysmmcti" path="res://door.tscn" id="10_vnl3y"]
 
 [node name="lvl2" type="Node2D"]
@@ -42,13 +42,13 @@ position = Vector2(1033, -90)
 [node name="shootingenemy3" parent="." instance=ExtResource("4_jp82h")]
 position = Vector2(1401, -95)
 
-[node name="10coin" parent="." instance=ExtResource("7_r1psr")]
-position = Vector2(1240, -195)
-
 [node name="overlay" parent="." instance=ExtResource("9_a821q")]
 
 [node name="door" parent="." instance=ExtResource("10_vnl3y")]
 position = Vector2(1033, -1040)
+
+[node name="5coin" parent="." instance=ExtResource("10_c0808")]
+position = Vector2(1263, -172)
 
 [connection signal="died" from="player" to="." method="_on_player_died"]
 [connection signal="cleared" from="door" to="." method="_on_door_cleared"]

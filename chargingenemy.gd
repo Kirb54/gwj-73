@@ -27,7 +27,7 @@ func _ready():
 	if flipped:
 		direction = 1
 		anim.flip_h = true
-		sight.target_position.x = 200
+		sight.target_position.x = 300
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -79,10 +79,10 @@ func bonked(s):
 		direction *= -1
 		if direction == 1:
 			anim.flip_h = true
-			sight.target_position.x = 200
+			sight.target_position.x = 300
 		else:
 			anim.flip_h = false
-			sight.target_position.x = -200
+			sight.target_position.x = --300
 	sight.enabled = true
 
 

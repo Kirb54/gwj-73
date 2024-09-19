@@ -19,7 +19,6 @@ run/stdout/print_fps=false
 
 gb="*res://global.gd"
 gt="*res://globaltimer.gd"
-go="*res://gameover.gd"
 
 [display]
 

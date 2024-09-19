@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://df7sxk3j3qxx0"]
+
+[ext_resource type="Texture2D" uid="uid://dlg6l55l7v23h" path="res://assets/Green.png" id="1_sh7tq"]
+
+[node name="greenbackground" type="ParallaxBackground"]
+metadata/_edit_vertical_guides_ = [1258.0]
+metadata/_edit_horizontal_guides_ = [755.0]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1258, 755)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture_filter = 1
+position = Vector2(629, 377.75)
+scale = Vector2(19.6563, 11.8047)
+texture = ExtResource("1_sh7tq")

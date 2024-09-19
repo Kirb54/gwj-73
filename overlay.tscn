@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://overlay.gd" id="1_4fvbl"]
 [ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="2_5yada"]
 
-[node name="overlay" type="CanvasLayer"]
-process_mode = 2
+[node name="overlay" type="CanvasLayer" groups=["overlay"]]
+process_mode = 3
 script = ExtResource("1_4fvbl")
 
 [node name="background" type="Panel" parent="."]
@@ -50,3 +50,7 @@ theme_override_font_sizes/font_size = 50
 text = "CLEARED"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="parrytimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true

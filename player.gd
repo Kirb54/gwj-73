@@ -221,6 +221,7 @@ func hit(v):
 	screenshaketimer.start()
 	anim.play('hit')
 	await anim.animation_finished
+	cam.offset = Vector2(0,0)
 	hitstun = false
 
 
@@ -293,3 +294,4 @@ func screenshaker():
 	if screenshaketimer.time_left != 0:
 		cam.offset.x = randf_range(-5,5)
 		cam.offset.y = randf_range(-5,5)
+

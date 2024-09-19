@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cax8qhrlu5xma" path="res://assets/upgrades/uncontrollable.png" id="11_ni2x5"]
 [ext_resource type="Texture2D" uid="uid://y4g18v5sxgix" path="res://assets/upgrades/floatyshoes.png" id="12_upvvv"]
 [ext_resource type="Texture2D" uid="uid://br80lcn1b4pq6" path="res://assets/upgrades/double bomb.png" id="13_43y0u"]
-[ext_resource type="Texture2D" uid="uid://dowtcypmds8rq" path="res://assets/10coin.png" id="14_2v1lm"]
+[ext_resource type="Texture2D" uid="uid://jjbunk7s0krq" path="res://assets/upgrades/coinhealth.png" id="14_kmxnu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0h13a"]
 animations = [{
@@ -31,7 +31,7 @@ animations = [{
 "texture": ExtResource("13_43y0u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_2v1lm")
+"texture": ExtResource("14_kmxnu")
 }],
 "loop": true,
 "name": &"frame",

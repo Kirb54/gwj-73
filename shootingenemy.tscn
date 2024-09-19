@@ -204,9 +204,8 @@ metadata/_edit_vertical_guides_ = [-15.0, 40.0]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lpsvq")
-animation = &"hit"
-frame = 4
-frame_progress = 1.0
+animation = &"attack"
+frame_progress = 0.916516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 5.5)

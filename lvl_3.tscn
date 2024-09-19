@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://brg5m6li0flvs" path="res://background.tscn" id="1_dqm6q"]
 [ext_resource type="PackedScene" uid="uid://dnfo5v0wojof7" path="res://tiles.tscn" id="2_f2kqr"]
 [ext_resource type="PackedScene" uid="uid://dvjesdns8jrc6" path="res://player.tscn" id="3_2308t"]
-[ext_resource type="PackedScene" uid="uid://dy0y0k56ha3yh" path="res://10_coin.tscn" id="4_hc83h"]
 [ext_resource type="PackedScene" uid="uid://bqvt2n17pbyko" path="res://chargingenemy.tscn" id="5_13dbt"]
 [ext_resource type="PackedScene" uid="uid://b7428wh0vxmm0" path="res://flyingenemy.tscn" id="6_m2li6"]
 [ext_resource type="PackedScene" uid="uid://byvtdaysmmcti" path="res://door.tscn" id="7_3mc1x"]
 [ext_resource type="PackedScene" uid="uid://88u4w8mcq47b" path="res://overlay.tscn" id="8_y80tx"]
+[ext_resource type="PackedScene" uid="uid://emnlf0025uum" path="res://5_coin.tscn" id="9_xwv6n"]
 
 [node name="lvl3" type="Node2D"]
 script = ExtResource("1_a08r3")
@@ -21,9 +21,6 @@ layer_0/tile_data = PackedInt32Array(786435, 65536, 0, 786436, 65536, 0, 786437,
 
 [node name="player" parent="." instance=ExtResource("3_2308t")]
 position = Vector2(468, 317)
-
-[node name="10coin" parent="." instance=ExtResource("4_hc83h")]
-position = Vector2(-498, 165)
 
 [node name="chargingenemy" parent="." instance=ExtResource("5_13dbt")]
 position = Vector2(-450, 321)
@@ -46,6 +43,9 @@ position = Vector2(170, -613)
 flipped = true
 
 [node name="overlay" parent="." instance=ExtResource("8_y80tx")]
+
+[node name="5coin" parent="." instance=ExtResource("9_xwv6n")]
+position = Vector2(-459, 176)
 
 [connection signal="died" from="player" to="." method="_on_player_died"]
 [connection signal="cleared" from="door" to="." method="_on_door_cleared"]
