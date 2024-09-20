@@ -17,6 +17,7 @@ signal died
 @onready var gameoverpart = $gameoverparticles
 @onready var cam = $Camera2D
 @onready var screenshaketimer = $screenshaketimer
+@onready var pausescreen = $pausescreen
 
 const jumpv = -300
 const left = -1
@@ -43,6 +44,7 @@ var death = false
 var screenshake = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	stompbox.disabled = true
 	explodehbox.disabled = true
 
@@ -55,6 +57,7 @@ func _process(delta):
 		explode()
 		wallslide()
 		animations()
+		pause()
 		stomphbox()
 	screenshaker()
 	gravity(delta)
@@ -89,6 +92,8 @@ func carrymomentom():
 			velocity.x = move_toward(velocity.x, 0, 200)
 		elif velocity.x > 0:
 			velocity.x = move_toward(velocity.x, 0, 30)
+	else:
+		velocity.x = move_toward(velocity.x, 0, 50)
 
 
 
@@ -297,3 +302,7 @@ func screenshaker():
 		cam.offset.x = randf_range(-5,5)
 		cam.offset.y = randf_range(-5,5)
 
+func pause():
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().paused = true
+		pausescreen.show()

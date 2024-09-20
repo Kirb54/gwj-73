@@ -2,7 +2,7 @@ extends Node
 
 
 var boosts = 1
-var explostr = 1000
+var explostr = 1200
 var fuseval = 100
 var explocost = 15
 var regenrate = .3
@@ -19,8 +19,8 @@ var coinhealth = false
 var sandbox = false
 func reset():
 	boosts = 1
-	explostr = 300
-	fuseval = 10
+	explostr = 1200
+	fuseval = 100
 	explocost = 15
 	regentime = 1
 	regenrate = .3
@@ -33,6 +33,7 @@ func reset():
 	uncontrol = false
 	coinhealth = false
 	sandbox = false
+	gt.time = 150
 
 
 func booststr():

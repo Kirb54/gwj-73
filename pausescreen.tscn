@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://chhfbufggylj8"]
+
+[ext_resource type="Script" path="res://pausescreen.gd" id="1_g5wfs"]
+[ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="2_46q60"]
+
+[node name="pausescreen" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_g5wfs")
+
+[node name="backdrop" type="Panel" parent="."]
+offset_right = 1170.0
+offset_bottom = 678.0
+
+[node name="pauselabel" type="Label" parent="."]
+offset_right = 1157.0
+offset_bottom = 651.0
+theme = ExtResource("2_46q60")
+theme_override_font_sizes/font_size = 70
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="resume" type="Button" parent="."]
+offset_left = 1.0
+offset_top = 102.0
+offset_right = 263.0
+offset_bottom = 209.0
+theme = ExtResource("2_46q60")
+text = "Resume"
+
+[node name="quit" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 208.0
+offset_right = 262.0
+offset_bottom = 305.0
+theme = ExtResource("2_46q60")
+text = "Quit"
+
+[node name="tutorial" type="Button" parent="."]
+offset_top = 308.0
+offset_right = 268.0
+offset_bottom = 407.0
+tooltip_text = "WARNING: Will quit your current run"
+theme = ExtResource("2_46q60")
+text = "See Tutorial"
+
+[connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]

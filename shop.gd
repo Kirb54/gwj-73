@@ -16,7 +16,9 @@ const levels = [
 	"res://lvl_5.tscn",
 	"res://lvl_6.tscn",
 	"res://lvl_7.tscn",
-	"res://lvl_8.tscn"
+	"res://lvl_8.tscn",
+	"res://lvl_9.tscn",
+	"res://lvl_10.tscn"
 	]
 const booststr = 'Boosts the power of your explosions (1.1x)'
 const clock = 'Increases the time you have remaining (+20 sec)'
@@ -34,6 +36,7 @@ var typing = false
 var focused = false
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	specialitemcheck()
 	await done
 	specialitemframe.frame = specialitem

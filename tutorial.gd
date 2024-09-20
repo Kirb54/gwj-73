@@ -9,6 +9,7 @@ extends Node2D
 
 var tutorialnumb = 0
 func _ready():
+	gt.tracking = false
 	continuebutton.hide()
 	explotorial()
 

@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://buvmla8aam81l"]
+[gd_scene load_steps=2 format=3 uid="uid://buvmla8aam81l"]
+
+[ext_resource type="Script" path="res://startmenu.gd" id="1_18g5r"]
 
 [node name="startmenu" type="Node2D"]
+script = ExtResource("1_18g5r")
