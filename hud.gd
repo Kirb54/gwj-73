@@ -136,7 +136,7 @@ func updatetime():
 	if not gb.sandbox:
 		timelabel.text = str(gt.minutes) + ':' + str(gt.seconds) + '.' + str(gt.msec)
 	else:
-		timelabel.hide()
+		timelabel.text = 'Sandbox'
 
 
 func checkempty():

@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var hboxleft = $hbox/CollisionShape2D
 @onready var hboxright = $hbox2/CollisionShape2D
 @onready var sight = $RayCast2D
-@onready var idletimer = $idletimernew
+@onready var idletimer = $idletimer
 @onready var anim = $AnimatedSprite2D
 
 const speed = 800

@@ -8,7 +8,16 @@ signal done
 @onready var coinlabel = $coinlabel
 
 
-const levels = ["res://lvl_1.tscn","res://lvl_2.tscn","res://lvl_3.tscn","res://lvl_4.tscn","res://lvl_5.tscn","res://lvl_6.tscn"]
+const levels = [
+	"res://lvl_1.tscn",
+	"res://lvl_2.tscn",
+	"res://lvl_3.tscn",
+	"res://lvl_4.tscn",
+	"res://lvl_5.tscn",
+	"res://lvl_6.tscn",
+	"res://lvl_7.tscn",
+	"res://lvl_8.tscn"
+	]
 const booststr = 'Boosts the power of your explosions (1.1x)'
 const clock = 'Increases the time you have remaining (+20 sec)'
 const boostcount = 'Increases the amout of explosions you can do midair (+1)'

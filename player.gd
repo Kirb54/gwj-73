@@ -187,8 +187,8 @@ func explode():
 		var add = abv.x + abv.y
 		var ratio = explostr/add
 		
-		velocity.x = ratio * diffrence.x
-		velocity.y = ratio * diffrence.y
+		velocity.x = -ratio * diffrence.x
+		velocity.y = -ratio * diffrence.y
 		flying = true
 		exploparticles.emitting = true
 		explodeattack()
