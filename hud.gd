@@ -42,9 +42,8 @@ func _process(delta):
 	gainfuse()
 	updatebar()
 	updatecoins()
-	if not gb.sandbox:
-		checkempty()
-		updatehealth()
+	checkempty()
+	updatehealth()
 	updatetime()
 	checktime()
 
@@ -141,11 +140,12 @@ func updatetime():
 
 
 func checkempty():
-	if health <= 0:
+	if health <= 0 and not gb.sandbox:
 		died.emit()
 
 func updatehealth():
-	healthlabel.text = 'Health: ' + str(health)
+	if not gb.sandbox:
+		healthlabel.text = 'Health: ' + str(health)
 
 func checktime():
 	if gt.time <= 0:

@@ -2,7 +2,7 @@ extends Node
 
 
 var boosts = 1
-var explostr = 1200
+var explostr = 1000
 var fuseval = 100
 var explocost = 15
 var regenrate = .3
