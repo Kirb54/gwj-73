@@ -14,7 +14,7 @@ signal done
 @onready var drinkcost = $cost5
 @onready var coincost = $cost6
 @onready var specialcost = $specialitemcost
-
+@onready var layerlabel = $layerlabel
 
 var bombprice = 5
 var clockprice = 10
@@ -48,6 +48,7 @@ const deathdefience = 'You no longer lose time when you die but you only have 1 
 const uncontrollable = 'You can overspend your fuse but you will lose control over your direction'
 const bankshare = 'Coins replace your health and you lose money on hit'
 
+
 var typing = false
 var focused = false
 
@@ -58,6 +59,7 @@ func _ready():
 	await done
 	specialitemframe.frame = specialitem
 	timelabel.text = str(gt.minutes) + ':' + str(gt.seconds) + '.' + str(gt.msec)
+	layerlabel.text = 'Layer: ' + str(gb.level)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -244,6 +246,7 @@ func _on_specialitem_pressed():
 func inflation():
 	var increase = (gb.level / 10) + 1
 	bombprice *= increase
+	print(bombprice)
 	bombcost.text = str(bombprice)
 	clockprice *= increase
 	clockcost.text = str(clockprice)
