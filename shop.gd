@@ -246,7 +246,6 @@ func _on_specialitem_pressed():
 func inflation():
 	var increase = (gb.level / 10) + 1
 	bombprice *= increase
-	print(bombprice)
 	bombcost.text = str(bombprice)
 	clockprice *= increase
 	clockcost.text = str(clockprice)
