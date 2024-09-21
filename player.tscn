@@ -361,7 +361,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252747), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5u1l"]
-radius = 34.0065
+radius = 45.3333
 
 [sub_resource type="Curve" id="Curve_sd1ed"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.792135, 0.901099), 0.0, 0.0, 0, 0, Vector2(1, 0.527472), 0.0, 0.0, 0, 0]

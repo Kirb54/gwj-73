@@ -44,6 +44,16 @@ tooltip_text = "WARNING: Will quit your current run"
 theme = ExtResource("2_46q60")
 text = "See Tutorial"
 
+[node name="fullscreen" type="CheckButton" parent="."]
+offset_left = 428.0
+offset_top = 385.0
+offset_right = 700.0
+offset_bottom = 470.0
+theme = ExtResource("2_46q60")
+text = "Fullscreen"
+alignment = 1
+
 [connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="toggled" from="fullscreen" to="." method="_on_fullscreen_toggled"]

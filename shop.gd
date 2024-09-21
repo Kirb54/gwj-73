@@ -26,7 +26,7 @@ const boostcount = 'Increases the amout of explosions you can do midair (+1)'
 const fuseincrease = 'Decreases the amout of fuse you use (0.9x)'
 const cashgrab = 'Increase the amout of money you get when you kill an enemy (+1)'
 const energydrink = 'Increase movement speed (1.2x)'
-const doubletrouble = 'You double your explosion strengh but you also duse double of your fuse (2x)'
+const doubletrouble = 'You double your explosion strengh but you also use double of your fuse (2x)'
 const floaty = 'Decrease your gravity but decrease your max health (1.3x,-1)'
 const deathdefience = 'You no longer lose time when you die but you only have 1 health'
 const uncontrollable = 'You can overspend your fuse but you will lose control over your direction'
@@ -196,7 +196,7 @@ func _on_drinkbutton_pressed():
 func _on_coinbutton_pressed():
 	if gb.coins >= 7:
 		print('money')
-		gb.coins -= 5
+		gb.coins -= 7
 		gb.extracoins += 1
 
 func _on_specialitem_pressed():
@@ -217,6 +217,8 @@ func _on_specialitem_pressed():
 		if specialitem == 3:
 			print('double')
 			gb.explostr *= 2
+			if gb.explostr >= 6000:
+				gb.explostr = 6000
 			gb.explocost *= 2
 		if specialitem == 4:
 			gb.coinhealth = true

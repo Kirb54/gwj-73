@@ -26,3 +26,10 @@ func _on_tutorial_pressed():
 	gb.reset()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://tutorial.tscn")
+
+
+func _on_fullscreen_toggled(toggled_on):
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

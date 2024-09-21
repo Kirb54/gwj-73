@@ -38,3 +38,5 @@ func reset():
 
 func booststr():
 	explostr *= 1.1
+	if explostr >= 6000:
+		explostr = 6000
