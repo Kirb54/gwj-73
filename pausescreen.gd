@@ -13,6 +13,7 @@ func _ready():
 func _on_resume_pressed():
 	
 	self.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	get_tree().paused = false
 
 

@@ -27,13 +27,13 @@ func _on_area_2d_body_entered(body):
 		if body.is_in_group('player'):
 			body.hit(speed)
 			self.queue_free()
-		else:
+		elif body.is_in_group('tilemap'):
 			self.queue_free()
 	else:
 		if body.is_in_group('enemy'):
 			body.hit()
 			self.queue_free()
-		else:
+		elif body.is_in_group('tilemap'):
 			self.queue_free()
 
 func hit():

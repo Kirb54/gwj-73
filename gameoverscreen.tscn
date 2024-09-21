@@ -1,3 +1,71 @@
-[gd_scene format=3 uid="uid://sdubvsaj6deu"]
+[gd_scene load_steps=5 format=3 uid="uid://sdubvsaj6deu"]
+
+[ext_resource type="Script" path="res://gameoverscreen.gd" id="1_nqflp"]
+[ext_resource type="Texture2D" uid="uid://bnwf2njtftyl4" path="res://assets/darkbackground.png" id="2_i7gdl"]
+[ext_resource type="Texture2D" uid="uid://cx7pqatru3f7f" path="res://assets/tower.png" id="3_b3xsi"]
+[ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="4_x5rvk"]
 
 [node name="gameoverscreen" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_nqflp")
+
+[node name="Darkbackground" type="Sprite2D" parent="."]
+position = Vector2(569, 324.5)
+scale = Vector2(37.0625, 21.2188)
+texture = ExtResource("2_i7gdl")
+
+[node name="Tower" type="Sprite2D" parent="."]
+position = Vector2(999.5, 341.5)
+scale = Vector2(17.1563, 20.5938)
+texture = ExtResource("3_b3xsi")
+
+[node name="retry" type="Button" parent="."]
+offset_left = 167.0
+offset_top = 304.0
+offset_right = 475.0
+offset_bottom = 418.0
+theme = ExtResource("4_x5rvk")
+theme_override_font_sizes/font_size = 30
+text = "Retry"
+
+[node name="quit" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 304.0
+offset_right = 788.0
+offset_bottom = 418.0
+theme = ExtResource("4_x5rvk")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="gameover" type="Label" parent="."]
+offset_left = 349.0
+offset_top = 36.0
+offset_right = 687.0
+offset_bottom = 99.0
+theme = ExtResource("4_x5rvk")
+theme_override_font_sizes/font_size = 40
+text = "GAMEOVER"
+horizontal_alignment = 1
+
+[node name="thx" type="Label" parent="."]
+offset_left = 119.0
+offset_top = 556.0
+offset_right = 659.0
+offset_bottom = 586.0
+theme = ExtResource("4_x5rvk")
+theme_override_font_sizes/font_size = 30
+text = "Thanks for playing"
+horizontal_alignment = 1
+
+[node name="layerlabel" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 151.0
+offset_right = 794.0
+offset_bottom = 181.0
+theme = ExtResource("4_x5rvk")
+theme_override_font_sizes/font_size = 30
+text = "You died on layer 0"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

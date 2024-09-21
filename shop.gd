@@ -6,7 +6,23 @@ signal done
 @onready var specialitemframe = $specialitemframe
 @onready var specialitem = randi_range(0,4)
 @onready var coinlabel = $coinlabel
+@onready var timelabel = $timelabel
+@onready var bombcost = $cost
+@onready var clockcost = $cost2
+@onready var explocost = $cost3
+@onready var fusecost = $cost4
+@onready var drinkcost = $cost5
+@onready var coincost = $cost6
+@onready var specialcost = $specialitemcost
 
+
+var bombprice = 5
+var clockprice = 10
+var exploprice = 7
+var fuseprice = 4
+var drinkprice = 5
+var coinprice = 8
+var specialprice = 12
 
 const levels = [
 	"res://lvl_1.tscn",
@@ -21,7 +37,7 @@ const levels = [
 	"res://lvl_10.tscn"
 	]
 const booststr = 'Boosts the power of your explosions (1.1x)'
-const clock = 'Increases the time you have remaining (+20 sec)'
+const clock = 'Increases the time you have remaining (+15 sec)'
 const boostcount = 'Increases the amout of explosions you can do midair (+1)'
 const fuseincrease = 'Decreases the amout of fuse you use (0.9x)'
 const cashgrab = 'Increase the amout of money you get when you kill an enemy (+1)'
@@ -37,9 +53,11 @@ var focused = false
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	inflation()
 	specialitemcheck()
 	await done
 	specialitemframe.frame = specialitem
+	timelabel.text = str(gt.minutes) + ':' + str(gt.seconds) + '.' + str(gt.msec)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -159,49 +177,49 @@ func updatemoney():
 
 
 func _on_strbutton_pressed():
-	if gb.coins >= 5:
+	if gb.coins >= bombprice:
 		print('extra str')
-		gb.coins -= 5
+		gb.coins -= bombprice
 		gb.booststr()
 
 
 func _on_clockbutton_pressed():
-	if gb.coins >= 10:
+	if gb.coins >= clockprice:
 		print('moretime')
-		gb.coins -= 10
-		gt.time += 20
+		gb.coins -= clockprice
+		gt.time += 15
 
 
 func _on_explobutton_pressed():
-	if gb.coins >= 7:
+	if gb.coins >= exploprice:
 		print('more bounce')
-		gb.coins -= 7
+		gb.coins -= exploprice
 		gb.boosts += 1
 
 
 func _on_fusebutton_pressed():
-	if gb.coins >= 4:
+	if gb.coins >= fuseprice:
 		print('fuse')
-		gb.coins -= 4
+		gb.coins -= fuseprice
 		gb.explocost *= .9
 
 
 func _on_drinkbutton_pressed():
-	if gb.coins >= 5:
+	if gb.coins >= drinkprice:
 		print('speed')
-		gb.coins -= 5
+		gb.coins -= drinkprice
 		gb.movementspeed *= 1.2
 
 
 func _on_coinbutton_pressed():
-	if gb.coins >= 7:
+	if gb.coins >= coinprice:
 		print('money')
-		gb.coins -= 7
+		gb.coins -= coinprice
 		gb.extracoins += 1
 
 func _on_specialitem_pressed():
-	if gb.coins >= 12:
-		gb.coins -= 12
+	if gb.coins >= specialprice:
+		gb.coins -= specialprice
 		if specialitem == 0:
 			print('death')
 			gb.deathpenalty = 0
@@ -222,6 +240,23 @@ func _on_specialitem_pressed():
 			gb.explocost *= 2
 		if specialitem == 4:
 			gb.coinhealth = true
+
+func inflation():
+	var increase = (gb.level / 10) + 1
+	bombprice *= increase
+	bombcost.text = str(bombprice)
+	clockprice *= increase
+	clockcost.text = str(clockprice)
+	exploprice *= increase
+	explocost.text = str(exploprice)
+	fuseprice *= increase
+	fusecost.text = str(fuseprice)
+	drinkprice *= increase
+	drinkcost.text = str(drinkprice)
+	coinprice *= increase
+	coincost.text = str(coinprice)
+	specialprice *= increase
+	specialcost.text = str(specialprice)
 
 
 func _on_leavebutton_pressed():
