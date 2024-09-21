@@ -118,9 +118,12 @@ func updatebar():
 
 func _on_player_hurt():
 	if gb.coinhealth:
-		gb.coins -= 5
-		if gb.coins < 0:
-			gb.coins = 0
+		if gb.coins != 0:
+			gb.coins -= 5 + gb.extracoins
+			if gb.coins < 0:
+				gb.coins = 0
+		else:
+			died.emit()
 	else:
 		health -= 1
 

@@ -30,7 +30,7 @@ const doubletrouble = 'You double your explosion strengh but you also duse doubl
 const floaty = 'Decrease your gravity but decrease your max health (1.3x,-1)'
 const deathdefience = 'You no longer lose time when you die but you only have 1 health'
 const uncontrollable = 'You can overspend your fuse but you will lose control over your direction'
-const bankshare = 'You cannot die from damage but you lose money on hit'
+const bankshare = 'Coins replace your health and you lose money on hit'
 
 var typing = false
 var focused = false
@@ -166,42 +166,42 @@ func _on_strbutton_pressed():
 
 
 func _on_clockbutton_pressed():
-	if gb.coins >= 7:
+	if gb.coins >= 10:
 		print('moretime')
-		gb.coins -= 7
+		gb.coins -= 10
 		gt.time += 20
 
 
 func _on_explobutton_pressed():
-	if gb.coins >= 10:
+	if gb.coins >= 7:
 		print('more bounce')
-		gb.coins -= 10
+		gb.coins -= 7
 		gb.boosts += 1
 
 
 func _on_fusebutton_pressed():
-	if gb.coins >= 5:
+	if gb.coins >= 4:
 		print('fuse')
-		gb.coins -= 5
+		gb.coins -= 4
 		gb.explocost *= .9
 
 
 func _on_drinkbutton_pressed():
-	if gb.coins >= 3:
+	if gb.coins >= 5:
 		print('speed')
-		gb.coins -= 3
+		gb.coins -= 5
 		gb.movementspeed *= 1.2
 
 
 func _on_coinbutton_pressed():
-	if gb.coins >= 5:
+	if gb.coins >= 7:
 		print('money')
 		gb.coins -= 5
 		gb.extracoins += 1
 
 func _on_specialitem_pressed():
-	if gb.coins >= 15:
-		gb.coins -= 15
+	if gb.coins >= 12:
+		gb.coins -= 12
 		if specialitem == 0:
 			print('death')
 			gb.deathpenalty = 0

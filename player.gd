@@ -255,6 +255,7 @@ func _on_stompbox_area_shape_entered(area_rid, area, area_shape_index, local_sha
 func _on_stompbox_body_entered(body):
 	if body.is_in_group('enemy'):
 		velocity.y = stompv
+		boosts = gb.boosts
 		body.hit()
 
 

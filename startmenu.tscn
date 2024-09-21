@@ -1,6 +1,66 @@
-[gd_scene load_steps=2 format=3 uid="uid://buvmla8aam81l"]
+[gd_scene load_steps=6 format=3 uid="uid://buvmla8aam81l"]
 
 [ext_resource type="Script" path="res://startmenu.gd" id="1_18g5r"]
+[ext_resource type="Texture2D" uid="uid://bnwf2njtftyl4" path="res://assets/darkbackground.png" id="2_i8qk3"]
+[ext_resource type="Texture2D" uid="uid://cx7pqatru3f7f" path="res://assets/tower.png" id="3_tq2qj"]
+[ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="4_ycyc0"]
+[ext_resource type="Texture2D" uid="uid://bjqlpvwg3w20k" path="res://assets/73-tower.png" id="5_8x6es"]
 
 [node name="startmenu" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_18g5r")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(588, 331)
+scale = Vector2(37.75, 21.6875)
+texture = ExtResource("2_i8qk3")
+
+[node name="tower" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(978, 349)
+scale = Vector2(19.3438, 20.7031)
+texture = ExtResource("3_tq2qj")
+
+[node name="title" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 16.0
+offset_right = 776.0
+offset_bottom = 111.0
+theme = ExtResource("4_ycyc0")
+theme_override_font_sizes/font_size = 30
+text = "Title! (ahaha)"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 182.0
+offset_right = 305.0
+offset_bottom = 297.0
+theme = ExtResource("4_ycyc0")
+text = "Play"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 300.0
+offset_right = 305.0
+offset_bottom = 415.0
+theme = ExtResource("4_ycyc0")
+text = "Tutorial"
+
+[node name="nooblabel" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 440.0
+offset_right = 316.0
+offset_bottom = 494.0
+theme = ExtResource("4_ycyc0")
+text = "Reccomended that you start with tutorial"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="73-tower" type="Sprite2D" parent="."]
+position = Vector2(572, 293)
+scale = Vector2(0.12987, 0.12987)
+texture = ExtResource("5_8x6es")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

@@ -65,4 +65,14 @@ text = "You can parry bullets by exploding when the bullet is near you"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="controllabel" type="Label" parent="."]
+offset_left = 278.0
+offset_top = 400.0
+offset_right = 518.0
+offset_bottom = 435.0
+theme = ExtResource("6_wf0yg")
+text = "wasd = movement
+Space = jump"
+horizontal_alignment = 1
+
 [connection signal="cleared" from="door" to="." method="_on_door_cleared"]
