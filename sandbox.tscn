@@ -75,4 +75,13 @@ text = "wasd = movement
 Space = jump"
 horizontal_alignment = 1
 
+[node name="pauselabel" type="Label" parent="."]
+offset_left = 559.0
+offset_top = 409.0
+offset_right = 847.0
+offset_bottom = 432.0
+theme = ExtResource("6_wf0yg")
+text = "press 'f' to pause"
+horizontal_alignment = 1
+
 [connection signal="cleared" from="door" to="." method="_on_door_cleared"]

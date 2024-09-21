@@ -62,5 +62,15 @@ position = Vector2(572, 293)
 scale = Vector2(0.12987, 0.12987)
 texture = ExtResource("5_8x6es")
 
+[node name="fullscreen" type="CheckButton" parent="."]
+offset_left = 443.0
+offset_top = 355.0
+offset_right = 715.0
+offset_bottom = 440.0
+theme = ExtResource("4_ycyc0")
+text = "Fullscreen"
+alignment = 1
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="toggled" from="fullscreen" to="." method="_on_fullscreen_toggled"]

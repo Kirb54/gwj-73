@@ -304,6 +304,6 @@ func screenshaker():
 		cam.offset.y = randf_range(-5,5)
 
 func pause():
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = true
 		pausescreen.show()
