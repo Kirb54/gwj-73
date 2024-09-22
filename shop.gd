@@ -48,7 +48,7 @@ const floaty = 'Decrease your gravity but decrease your max health (1.3x,-1)'
 const deathdefience = 'You no longer lose time when you die but you only have 1 health'
 const uncontrollable = 'You can overspend your fuse but you will lose control over your direction'
 const bankshare = 'Coins replace your health and you lose money on hit'
-
+const strlimit = 'Explosion power limit exceeded'
 
 var typing = false
 var focused = false
@@ -181,10 +181,15 @@ func updatemoney():
 
 func _on_strbutton_pressed():
 	if gb.coins >= bombprice:
-		sfx.playsound(selectsfx)
-		print('extra str')
-		gb.coins -= bombprice
-		gb.booststr()
+		if gb.explostr != 6000:
+			sfx.playsound(selectsfx)
+			print('extra str')
+			gb.coins -= bombprice
+			gb.booststr()
+		else:
+			focused = false
+			await not typing
+			addiscription(strlimit)
 
 
 func _on_clockbutton_pressed():
@@ -243,11 +248,16 @@ func _on_specialitem_pressed():
 				gb.maxhealth -= 1
 			gb.gravity *= .7
 		if specialitem == 3:
-			print('double')
-			gb.explostr *= 2
-			if gb.explostr >= 6000:
-				gb.explostr = 6000
-			gb.explocost *= 2
+			if gb.explostr != 6000:
+				print('double')
+				gb.explostr *= 2
+				if gb.explostr >= 6000:
+					gb.explostr = 6000
+				gb.explocost *= 2
+			else:
+				focused = false
+				await not typing
+				addiscription(strlimit)
 		if specialitem == 4:
 			gb.coinhealth = true
 
@@ -267,6 +277,7 @@ func inflation():
 	coincost.text = str(coinprice)
 	specialprice *= increase
 	specialcost.text = str(specialprice)
+	gb.deathpenalty *= increase
 
 
 func _on_leavebutton_pressed():
