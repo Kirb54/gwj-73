@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var flipped = false
-
+@export var deathsfx = AudioStream
 
 @onready var bullet = preload("res://bullet.tscn")
 @onready var anim = $AnimatedSprite2D
@@ -55,6 +55,7 @@ func hit():
 	dying = true
 	hbox.disabled = true
 	anim.play('hit')
+	sfx.playsound(deathsfx)
 	await anim.animation_finished
 	gb.coins += coinval + gb.extracoins
 	self.queue_free()

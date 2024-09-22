@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://bqvt2n17pbyko"]
+[gd_scene load_steps=36 format=3 uid="uid://bqvt2n17pbyko"]
 
 [ext_resource type="Script" path="res://chargingenemy.gd" id="1_hr7lp"]
+[ext_resource type="AudioStream" uid="uid://dd154j6ofecqm" path="res://gamesfx/death.mp3" id="2_6uc2o"]
 [ext_resource type="Texture2D" uid="uid://ds8nek371lthw" path="res://assets/Rino/Run (52x34).png" id="2_c4sft"]
 [ext_resource type="Texture2D" uid="uid://demxrxtyhx3b2" path="res://assets/Rino/Hit Wall (52x34).png" id="3_qevbb"]
 [ext_resource type="Texture2D" uid="uid://c5takdj36bv5v" path="res://assets/Rino/Hit (52x34).png" id="4_b46dq"]
@@ -223,6 +224,7 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_hr7lp")
+deathsfx = ExtResource("2_6uc2o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4epvi")

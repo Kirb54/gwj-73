@@ -4,6 +4,12 @@ signal exploded
 signal hurt
 signal died
 
+@export var hitsfx : AudioStream
+@export var explosionsfx : AudioStream
+@export var gameoversfx : AudioStream
+@export var deathsfx : AudioStream
+
+
 
 @onready var anim = $AnimatedSprite2D
 @onready var cyote = $cyote
@@ -194,6 +200,7 @@ func explode():
 		
 		velocity.x = -ratio * diffrence.x
 		velocity.y = -ratio * diffrence.y
+		sfx.playsound(explosionsfx)
 		flying = true
 		exploparticles.emitting = true
 		explodeattack()
@@ -226,6 +233,7 @@ func hit(v):
 		hitstun = true
 		screenshaketimer.start()
 		anim.play('hit')
+		sfx.playsound(hitsfx)
 		await anim.animation_finished
 		cam.offset = Vector2(0,0)
 		hitstun = false
@@ -279,6 +287,7 @@ func _on_hud_boom():
 
 func _on_hud_died():
 	if not death:
+		sfx.playsound(deathsfx)
 		death = true
 		anim.play('hit')
 		await anim.animation_finished
@@ -290,6 +299,7 @@ func _on_hud_gameover():
 	if not death:
 		death = true
 		anim.play("hit")
+		sfx.playsound(gameoversfx)
 		await anim.animation_finished
 		anim.hide()
 		gameoverpart.emitting = true
@@ -307,4 +317,6 @@ func pause():
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		pausescreen.pause()
 		pausescreen.show()
+		

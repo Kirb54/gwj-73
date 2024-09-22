@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var flipped = false
-
+@export var deathsfx = AudioStream
 
 @onready var hboxleft = $hbox/CollisionShape2D
 @onready var hboxright = $hbox2/CollisionShape2D
@@ -107,6 +107,7 @@ func hit():
 	hboxleft.disabled = true
 	hboxright.disabled = true
 	anim.play("hurt")
+	sfx.playsound(deathsfx)
 	await anim.animation_finished
 	gb.coins += coinval + gb.extracoins
 	self.queue_free()

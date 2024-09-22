@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var anim = $AnimatedSprite2D
 @onready var hbox = $hbox/CollisionShape2D
-
+@export var deathsfx = AudioStream
 const speed = 300
 const coinval = 2
 
@@ -58,6 +58,7 @@ func hit():
 		dead = true
 		hbox.disabled = true
 		anim.play('hit')
+		sfx.playsound(deathsfx)
 		await anim.animation_finished
 		gb.coins += coinval + gb.extracoins
 		self.queue_free()

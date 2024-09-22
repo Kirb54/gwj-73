@@ -51,7 +51,7 @@ func _process(delta):
 func _on_player_exploded():
 	fusedrained = true
 	newfuseval -= explocost
-	if fuseval <= 0:
+	if fuseval <= 0 and not gb.uncontrol:
 		boom.emit()
 
 func drainfuse():

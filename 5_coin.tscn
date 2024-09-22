@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://emnlf0025uum"]
+[gd_scene load_steps=5 format=3 uid="uid://emnlf0025uum"]
 
 [ext_resource type="Script" path="res://5_coin.gd" id="1_f34u4"]
 [ext_resource type="Texture2D" uid="uid://dlf23ul1qoqph" path="res://assets/5coin.png" id="2_7tooq"]
+[ext_resource type="AudioStream" uid="uid://bab6v21hbqau1" path="res://gamesfx/coin.mp3" id="2_x0hwp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vlq2u"]
 radius = 16.0078
@@ -10,6 +11,7 @@ radius = 16.0078
 texture_filter = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_f34u4")
+coinsfx = ExtResource("2_x0hwp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7tooq")

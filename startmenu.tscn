@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://buvmla8aam81l"]
+[gd_scene load_steps=7 format=3 uid="uid://buvmla8aam81l"]
 
 [ext_resource type="Script" path="res://startmenu.gd" id="1_18g5r"]
+[ext_resource type="AudioStream" uid="uid://cqc5net15va5y" path="res://gamesfx/select.mp3" id="2_g1xn8"]
 [ext_resource type="Texture2D" uid="uid://bnwf2njtftyl4" path="res://assets/darkbackground.png" id="2_i8qk3"]
 [ext_resource type="Texture2D" uid="uid://cx7pqatru3f7f" path="res://assets/tower.png" id="3_tq2qj"]
 [ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="4_ycyc0"]
@@ -9,6 +10,7 @@
 [node name="startmenu" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_18g5r")
+selectsfx = ExtResource("2_g1xn8")
 
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(588, 331)
@@ -28,7 +30,7 @@ offset_right = 776.0
 offset_bottom = 111.0
 theme = ExtResource("4_ycyc0")
 theme_override_font_sizes/font_size = 30
-text = "Title! (ahaha)"
+text = "Combustion Climb"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
@@ -71,6 +73,16 @@ theme = ExtResource("4_ycyc0")
 text = "Fullscreen"
 alignment = 1
 
+[node name="mutebutton" type="CheckButton" parent="."]
+offset_left = 462.0
+offset_top = 449.0
+offset_right = 691.0
+offset_bottom = 508.0
+theme = ExtResource("4_ycyc0")
+text = "Mute"
+alignment = 1
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="toggled" from="fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="mutebutton" to="." method="_on_mutebutton_toggled"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://sdubvsaj6deu"]
+[gd_scene load_steps=6 format=3 uid="uid://sdubvsaj6deu"]
 
 [ext_resource type="Script" path="res://gameoverscreen.gd" id="1_nqflp"]
+[ext_resource type="AudioStream" uid="uid://cqc5net15va5y" path="res://gamesfx/select.mp3" id="2_0h4gx"]
 [ext_resource type="Texture2D" uid="uid://bnwf2njtftyl4" path="res://assets/darkbackground.png" id="2_i7gdl"]
 [ext_resource type="Texture2D" uid="uid://cx7pqatru3f7f" path="res://assets/tower.png" id="3_b3xsi"]
 [ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="4_x5rvk"]
@@ -8,6 +9,7 @@
 [node name="gameoverscreen" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_nqflp")
+selectsfx = ExtResource("2_0h4gx")
 
 [node name="Darkbackground" type="Sprite2D" parent="."]
 position = Vector2(569, 324.5)

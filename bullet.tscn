@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4xy1d7loqwbe"]
+[gd_scene load_steps=6 format=3 uid="uid://b4xy1d7loqwbe"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1_1dcdn"]
+[ext_resource type="AudioStream" uid="uid://cu3ahla66onpw" path="res://gamesfx/parry.mp3" id="2_jqxb1"]
 [ext_resource type="Texture2D" uid="uid://cnb136k5aiuh8" path="res://assets/Plant/Bullet.png" id="2_r0dy4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_38yls"]
@@ -23,6 +24,7 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_1dcdn")
+parrysfx = ExtResource("2_jqxb1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_38yls")

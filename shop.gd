@@ -1,5 +1,6 @@
 extends Node2D
 signal done
+@export var selectsfx : AudioStream
 
 @onready var waittimer = $waittimer
 @onready var discription = $discription
@@ -180,6 +181,7 @@ func updatemoney():
 
 func _on_strbutton_pressed():
 	if gb.coins >= bombprice:
+		sfx.playsound(selectsfx)
 		print('extra str')
 		gb.coins -= bombprice
 		gb.booststr()
@@ -187,6 +189,7 @@ func _on_strbutton_pressed():
 
 func _on_clockbutton_pressed():
 	if gb.coins >= clockprice:
+		sfx.playsound(selectsfx)
 		print('moretime')
 		gb.coins -= clockprice
 		gt.time += 15
@@ -194,6 +197,7 @@ func _on_clockbutton_pressed():
 
 func _on_explobutton_pressed():
 	if gb.coins >= exploprice:
+		sfx.playsound(selectsfx)
 		print('more bounce')
 		gb.coins -= exploprice
 		gb.boosts += 1
@@ -201,6 +205,7 @@ func _on_explobutton_pressed():
 
 func _on_fusebutton_pressed():
 	if gb.coins >= fuseprice:
+		sfx.playsound(selectsfx)
 		print('fuse')
 		gb.coins -= fuseprice
 		gb.explocost *= .9
@@ -208,6 +213,7 @@ func _on_fusebutton_pressed():
 
 func _on_drinkbutton_pressed():
 	if gb.coins >= drinkprice:
+		sfx.playsound(selectsfx)
 		print('speed')
 		gb.coins -= drinkprice
 		gb.movementspeed *= 1.2
@@ -215,12 +221,14 @@ func _on_drinkbutton_pressed():
 
 func _on_coinbutton_pressed():
 	if gb.coins >= coinprice:
+		sfx.playsound(selectsfx)
 		print('money')
 		gb.coins -= coinprice
 		gb.extracoins += 1
 
 func _on_specialitem_pressed():
 	if gb.coins >= specialprice:
+		sfx.playsound(selectsfx)
 		gb.coins -= specialprice
 		if specialitem == 0:
 			print('death')
@@ -263,6 +271,7 @@ func inflation():
 
 func _on_leavebutton_pressed():
 	gb.level += 1
+	sfx.playsound(selectsfx)
 	var randlevel = randi() % levels.size()
 	#levels[randlevel]
 	get_tree().change_scene_to_file(levels[randlevel])

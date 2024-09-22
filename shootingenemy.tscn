@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://x67jy40k6tko"]
+[gd_scene load_steps=32 format=3 uid="uid://x67jy40k6tko"]
 
 [ext_resource type="Script" path="res://shootingenemy.gd" id="1_iybye"]
 [ext_resource type="Texture2D" uid="uid://b65ctn76sqfw4" path="res://assets/Plant/Attack (44x42).png" id="2_g5l3j"]
+[ext_resource type="AudioStream" uid="uid://dd154j6ofecqm" path="res://gamesfx/death.mp3" id="2_nsnbt"]
 [ext_resource type="Texture2D" uid="uid://tvdrjd6ei8c4" path="res://assets/Plant/Hit (44x42).png" id="3_uvuhf"]
 [ext_resource type="Texture2D" uid="uid://yubuccvycl46" path="res://assets/Plant/Idle (44x42).png" id="4_5jkoi"]
 
@@ -200,6 +201,7 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_iybye")
+deathsfx = ExtResource("2_nsnbt")
 metadata/_edit_vertical_guides_ = [-15.0, 40.0]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://chhfbufggylj8"]
+[gd_scene load_steps=4 format=3 uid="uid://chhfbufggylj8"]
 
 [ext_resource type="Script" path="res://pausescreen.gd" id="1_g5wfs"]
 [ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="2_46q60"]
+[ext_resource type="AudioStream" uid="uid://cqc5net15va5y" path="res://gamesfx/select.mp3" id="2_jr546"]
 
 [node name="pausescreen" type="CanvasLayer"]
 process_mode = 2
 script = ExtResource("1_g5wfs")
+selectsfx = ExtResource("2_jr546")
 
 [node name="backdrop" type="Panel" parent="."]
 offset_right = 1170.0
@@ -53,7 +55,17 @@ theme = ExtResource("2_46q60")
 text = "Fullscreen"
 alignment = 1
 
+[node name="mutebutton" type="CheckButton" parent="."]
+offset_left = 430.0
+offset_top = 475.0
+offset_right = 705.0
+offset_bottom = 564.0
+theme = ExtResource("2_46q60")
+text = "Mute"
+alignment = 1
+
 [connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="toggled" from="fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="mutebutton" to="." method="_on_mutebutton_toggled"]

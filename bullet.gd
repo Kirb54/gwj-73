@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var parrysfx : AudioStream
+
 var speed = 500
 var parried = false
 var hitstoptime = 0
@@ -42,6 +44,7 @@ func hit():
 
 
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	if area.is_in_group('explosion'):
+	if area.is_in_group('explosion') and not parried:
 		speed *= -1
+		sfx.playsound(parrysfx)
 		parried = true

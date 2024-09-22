@@ -6,7 +6,7 @@ extends Node2D
 @onready var timedirections = $"time directions"
 @onready var explodirectons = $"explo directions"
 @onready var continuebutton = $continuebutton
-
+@export var selectsfx : AudioStream
 var tutorialnumb = 0
 func _ready():
 	gt.tracking = false
@@ -49,6 +49,7 @@ func healthtorial():
 	moneydirections.hide()
 
 func _on_nextbutton_pressed():
+	sfx.playsound(selectsfx)
 	tutorialnumb += 1
 	if tutorialnumb > 4:
 		tutorialnumb = 4
@@ -56,6 +57,7 @@ func _on_nextbutton_pressed():
 
 
 func _on_backbutton_pressed():
+	sfx.playsound(selectsfx)
 	tutorialnumb -= 1
 	if tutorialnumb < 0:
 		tutorialnumb = 0
@@ -76,8 +78,10 @@ func settutorial():
 
 
 func _on_skipbutton_pressed():
+	sfx.playsound(selectsfx)
 	get_tree().change_scene_to_file("res://sandbox.tscn")
 
 
 func _on_continuebutton_pressed():
+	sfx.playsound(selectsfx)
 	get_tree().change_scene_to_file("res://sandbox.tscn")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctnu5l51vu38c"]
+[gd_scene load_steps=17 format=3 uid="uid://ctnu5l51vu38c"]
 
 [ext_resource type="Script" path="res://shop.gd" id="1_6s0hx"]
 [ext_resource type="Texture2D" uid="uid://sfs6rm76gf3w" path="res://assets/Blue.png" id="1_6xkfc"]
+[ext_resource type="AudioStream" uid="uid://cqc5net15va5y" path="res://gamesfx/select.mp3" id="2_7ytf8"]
 [ext_resource type="Theme" uid="uid://g4ngimo1kysp" path="res://assets/delaulttheme.tres" id="2_iqq8w"]
 [ext_resource type="Texture2D" uid="uid://b8tu1jibh8wb2" path="res://assets/upgrades/bomb.png" id="4_idqs5"]
 [ext_resource type="Texture2D" uid="uid://bbe6glfbtutpb" path="res://assets/upgrades/explosion.png" id="5_8etbm"]
@@ -41,6 +42,7 @@ animations = [{
 [node name="shop" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_6s0hx")
+selectsfx = ExtResource("2_7ytf8")
 
 [node name="Blue" type="Sprite2D" parent="."]
 position = Vector2(561.5, 343.5)
@@ -235,8 +237,10 @@ theme_override_font_sizes/font_size = 30
 text = "12"
 
 [node name="coinlabel" type="Label" parent="."]
-offset_right = 92.0
-offset_bottom = 60.0
+offset_left = 11.0
+offset_top = 601.0
+offset_right = 251.0
+offset_bottom = 661.0
 theme = ExtResource("2_iqq8w")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
@@ -262,10 +266,10 @@ text = "0:0.0"
 horizontal_alignment = 1
 
 [node name="layerlabel" type="Label" parent="."]
-offset_left = 9.0
-offset_top = 606.0
-offset_right = 249.0
-offset_bottom = 636.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 46.0
 theme = ExtResource("2_iqq8w")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30

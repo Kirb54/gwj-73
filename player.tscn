@@ -1,10 +1,14 @@
-[gd_scene load_steps=60 format=3 uid="uid://dvjesdns8jrc6"]
+[gd_scene load_steps=64 format=3 uid="uid://dvjesdns8jrc6"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_wotcu"]
 [ext_resource type="Texture2D" uid="uid://c8r2brpcbl3g2" path="res://assets/Pink Man/Double Jump (32x32).png" id="2_mlwjk"]
+[ext_resource type="AudioStream" uid="uid://b64lwqd1kwcy8" path="res://gamesfx/hit.mp3" id="3_run85"]
 [ext_resource type="Texture2D" uid="uid://bk3cgrdq7aqnw" path="res://assets/Pink Man/Hit (32x32).png" id="3_sfusd"]
+[ext_resource type="AudioStream" uid="uid://b0cpi7flk57ko" path="res://gamesfx/explosion.mp3" id="4_vvafw"]
 [ext_resource type="Texture2D" uid="uid://o7ppqaj57mt" path="res://assets/Pink Man/Idle (32x32).png" id="4_w81yh"]
+[ext_resource type="AudioStream" uid="uid://do1oyrvuvkpp8" path="res://gamesfx/gameover.mp3" id="5_jdcrc"]
 [ext_resource type="Texture2D" uid="uid://dogeamql8bkvs" path="res://assets/Pink Man/Fall (32x32).png" id="5_xai4k"]
+[ext_resource type="AudioStream" uid="uid://dd154j6ofecqm" path="res://gamesfx/death.mp3" id="6_awlrk"]
 [ext_resource type="Texture2D" uid="uid://mc4cc1afdkyi" path="res://assets/Pink Man/Jump (32x32).png" id="6_xfoue"]
 [ext_resource type="Texture2D" uid="uid://brhbj4oqf22jx" path="res://assets/Pink Man/Run (32x32).png" id="7_g4vuc"]
 [ext_resource type="Texture2D" uid="uid://t7xc3fv0v56f" path="res://assets/Pink Man/Wall Jump (32x32).png" id="8_6556e"]
@@ -373,6 +377,10 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_wotcu")
+hitsfx = ExtResource("3_run85")
+explosionsfx = ExtResource("4_vvafw")
+gameoversfx = ExtResource("5_jdcrc")
+deathsfx = ExtResource("6_awlrk")
 
 [node name="smokeparticles" type="CPUParticles2D" parent="."]
 amount = 16
